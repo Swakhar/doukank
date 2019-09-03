@@ -49,7 +49,7 @@ class GeneralTest extends TestCase
      */
     public function testCategoriesPage()
     {
-        $categoryUrlSlug = 'marvel-figurines';
+        $categoryUrlSlug = 'clothes';
 
         config(['app.url' => 'http://127.0.0.1:8000']);
 

@@ -68,6 +68,7 @@ return [
         'taxes' => 'الضرائب',
         'tax-categories' => 'فئات الضرائب',
         'tax-rates' => 'المعدلات الضريبية',
+        'promotion' => 'الخصومات',
         'edit' => 'Edit',
         'create' => 'Add',
         'delete' => 'Delete',

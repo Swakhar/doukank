@@ -29,7 +29,7 @@ class Locale
     */
     public function handle($request, Closure $next)
     {
-        $query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
+        $query = parse_url($request->getRequestUri(), PHP_URL_QUERY);
         $localeTerm = preg_split('/(\?|&)/', $query);
         $localCode = '';
 
