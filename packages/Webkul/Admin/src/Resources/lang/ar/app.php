@@ -38,7 +38,8 @@ return [
         'sliders' => 'المنزلقون',
         'taxes' => 'الضرائب',
         'tax-categories' => 'فئات الضرائب',
-        'tax-rates' => 'المعدلات الضريبية'
+        'tax-rates' => 'المعدلات الضريبية',
+        'promotion' => 'الخصومات'
     ],
     'acl' => [
         'dashboard' => 'لوحة العدادات',
@@ -217,12 +218,12 @@ return [
             'activate-warning' => 'حسابك لم يتم تفعيله بعد ، الرجاء الاتصال بالمدير.'
         ],
         'sessions' => [
-            'title' => 'وقع هنا',
-            'email' => 'Email',
-            'password' => 'Password',
+            'title' => 'تسجيل الدخول',
+            'email' => 'الايميل',
+            'password' => 'كلمة السر',
             'forget-password-link-title' => 'نسيت كلمة السر ؟',
             'remember-me' => 'تذكريني',
-            'submit-btn-title' => 'وقع هنا'
+            'submit-btn-title' => 'تسجيل الدخول'
         ]
     ],
     'sales' => [
@@ -768,6 +769,6 @@ return [
         'already-taken' => 'The :name has already been taken.'
     ],
     'footer' => [
-        'copy-right' => '© Copyright 2018 Webkul Software, All rights reserved.'
+        'copy-right' => 'الحقوق محفوظة لشركة دكانك. علامة تجارية سورية 2019'
     ],
 ];

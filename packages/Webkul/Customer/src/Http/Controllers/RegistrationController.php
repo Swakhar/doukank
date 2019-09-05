@@ -56,6 +56,7 @@ class RegistrationController extends Controller
      */
     public function create(Request $request)
     {
+
         $request->validate([
             'first_name' => 'string|required',
             'last_name' => 'string|required',
@@ -88,6 +89,7 @@ class RegistrationController extends Controller
         Event::fire('customer.registration.after', $customer);
 
         if ($customer) {
+
             if (core()->getConfigData('customer.settings.email.verification')) {
                 try {
                     Mail::queue(new VerificationEmail($verificationData));

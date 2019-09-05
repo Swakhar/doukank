@@ -124,4 +124,14 @@ class Customer extends Authenticatable implements CustomerContract, JWTSubject
     {
         return [];
     }
+
+    public function store(){
+        return $this->hasOne(Store);
+    }
+
+    public function isSeller(){
+
+        return $this->store;
+
+    }
 }
