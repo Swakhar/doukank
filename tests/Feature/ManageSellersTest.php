@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Store;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Artisan;
 use Tests\TestCase;
@@ -30,6 +31,7 @@ class ManageSellersTest extends TestCase
             'password' => '123123',
             'password_confirmation' => '123123',
             'is_seller' => '1',
+            'store-url' => 'abdo-store'
         ])->assertRedirect('/customer/login');
 
         $this->assertDatabaseHas('customers', [
@@ -40,6 +42,25 @@ class ManageSellersTest extends TestCase
 
         $this->assertTrue($customer->isSeller());
 
+        $this->assertInstanceOf(Store::class, $customer->store);
+
+        // TODO: move the following tests to unit tests, after creating factories to make your life easier.
+
+        // test: the store is inactive by default.
+        $this->assertEquals(0, $customer->store->is_active);
+
+        // test: store can be activated.
+        $customer->store->activate();
+
+        $this->assertEquals(1, $customer->store->is_active);
+
+        // test: store can be inactivated.
+        $customer->store->inactivate();
+
+        $this->assertEquals(0, $customer->store->is_active);
+
     }
+
+
 
 }

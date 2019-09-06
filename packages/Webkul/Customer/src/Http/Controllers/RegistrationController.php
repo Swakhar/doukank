@@ -2,6 +2,7 @@
 
 namespace Webkul\Customer\Http\Controllers;
 
+use App\Store;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Event;
@@ -83,6 +84,21 @@ class RegistrationController extends Controller
         $data['token'] = $verificationData['token'];
 
         Event::fire('customer.registration.before');
+
+        // this block will handle creating a store, and assigning it to the newly created seller.
+        // TODO: will be moved later to a separate package, now just to pass the test
+
+        if($request->get('is_seller') == 1){
+
+            $store = Store::create([
+                'url' => $request->get('store-url')
+            ]);
+
+            $data['store_id'] = $store->id;
+
+        }
+
+        // end of block
 
         $customer = $this->customer->create($data);
 
