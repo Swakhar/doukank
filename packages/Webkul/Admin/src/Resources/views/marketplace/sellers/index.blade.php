@@ -23,7 +23,7 @@
 
         <div class="page-content">
             @foreach($sellers as $seller)
-                <li>{{ $seller->first_name }}</li>
+                <li>{{ $seller->first_name }} , {{ $seller->store->is_active }}</li>
             @endforeach
         </div>
     </div>

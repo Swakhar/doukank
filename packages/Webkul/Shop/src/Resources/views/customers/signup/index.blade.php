@@ -51,16 +51,26 @@
                 <span class="control-error" v-if="errors.has('password_confirmation')">@{{ errors.first('password_confirmation') }}</span>
             </div>
 
-            {{-- <div class="signup-confirm" :class="[errors.has('agreement') ? 'has-error' : '']">
+            <div class="signup-confirm">
                 <span class="checkbox">
-                    <input type="checkbox" id="checkbox2" name="agreement" v-validate="'required'">
+                    <input type="checkbox" id="checkbox2" name="is_seller">
                     <label class="checkbox-view" for="checkbox2"></label>
-                    <span>{{ __('shop::app.customer.signup-form.agree') }}
-                        <a href="">{{ __('shop::app.customer.signup-form.terms') }}</a> & <a href="">{{ __('shop::app.customer.signup-form.conditions') }}</a> {{ __('shop::app.customer.signup-form.using') }}.
+                    <span>
+                       {{ __('shop::app.customer.signup-form.seller-message') }}
                     </span>
                 </span>
-                <span class="control-error" v-if="errors.has('agreement')">@{{ errors.first('agreement') }}</span>
-            </div> --}}
+            </div>
+
+{{--            <div class="signup-confirm" :class="[errors.has('agreement') ? 'has-error' : '']">--}}
+{{--                <span class="checkbox">--}}
+{{--                    <input type="checkbox" id="checkbox2" name="agreement" v-validate="'required'">--}}
+{{--                    <label class="checkbox-view" for="checkbox2"></label>--}}
+{{--                    <span>{{ __('shop::app.customer.signup-form.agree') }}--}}
+{{--                        <a href="">{{ __('shop::app.customer.signup-form.terms') }}</a> & <a href="">{{ __('shop::app.customer.signup-form.conditions') }}</a> {{ __('shop::app.customer.signup-form.using') }}.--}}
+{{--                    </span>--}}
+{{--                </span>--}}
+{{--                <span class="control-error" v-if="errors.has('agreement')">@{{ errors.first('agreement') }}</span>--}}
+{{--            </div>--}}
 
             {!! view_render_event('bagisto.shop.customers.signup_form_controls.after') !!}
 

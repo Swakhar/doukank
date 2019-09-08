@@ -103,6 +103,7 @@ return [
             'confirm_pass' => 'Confirm Password',
             'button_title' => 'Register',
             'agree' => 'Agree',
+            'seller-message' => 'I want to be a seller',
             'terms' => 'Terms',
             'conditions' => 'Conditions',
             'using' => 'by using this website',
