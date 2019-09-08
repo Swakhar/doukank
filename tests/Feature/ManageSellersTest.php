@@ -61,6 +61,30 @@ class ManageSellersTest extends TestCase
 
     }
 
+    /** @test */
+    function admins_can_see_sellers(){
 
+        $this->seed();
+
+        // create a seller
+        $this->post('customer/register', [
+            'first_name' => 'abdo',
+            'last_name' => 'badenjki',
+            'email' => 'abdo@badenjki.co',
+            'password' => '123123',
+            'password_confirmation' => '123123',
+            'is_seller' => '1',
+            'store-url' => 'abdo-store'
+        ]);
+
+        // login as an admin
+        $this->post('admin/login', [
+            'email' => 'admin@example.com',
+            'password' => 'admin123'
+        ])->assertRedirect('admin/dashboard');
+
+        $this->get('admin/marketplace/sellers');
+
+    }
 
 }

@@ -141,7 +141,6 @@ Route::group(['middleware' => ['web']], function () {
 
             Route::post('groups/delete/{id}', 'Webkul\Admin\Http\Controllers\Customer\CustomerGroupController@destroy')->name('admin.groups.delete');
 
-
             // Sales Routes
             Route::prefix('sales')->group(function () {
                 // Sales Order Routes
@@ -156,7 +155,6 @@ Route::group(['middleware' => ['web']], function () {
                 Route::get('/orders/cancel/{id}', 'Webkul\Admin\Http\Controllers\Sales\OrderController@cancel')->defaults('_config', [
                     'view' => 'admin::sales.orders.cancel'
                 ])->name('admin.sales.orders.cancel');
-
 
                 // Sales Invoices Routes
                 Route::get('/invoices', 'Webkul\Admin\Http\Controllers\Sales\InvoiceController@index')->defaults('_config', [
@@ -179,7 +177,6 @@ Route::group(['middleware' => ['web']], function () {
                     'view' => 'admin::sales.invoices.print'
                 ])->name('admin.sales.invoices.print');
 
-
                 // Sales Shipments Routes
                 Route::get('/shipments', 'Webkul\Admin\Http\Controllers\Sales\ShipmentController@index')->defaults('_config', [
                     'view' => 'admin::sales.shipments.index'
@@ -196,7 +193,19 @@ Route::group(['middleware' => ['web']], function () {
                 Route::get('/shipments/view/{id}', 'Webkul\Admin\Http\Controllers\Sales\ShipmentController@view')->defaults('_config', [
                     'view' => 'admin::sales.shipments.view'
                 ])->name('admin.sales.shipments.view');
+
             });
+
+            // Marketplace Routes
+            Route::prefix('marketplace')->group(function () {
+
+                // Sales Order Routes
+                Route::get('/sellers', 'Webkul\Admin\Http\Controllers\Marketplace\SellerController@index')->defaults('_config', [
+                    'view' => 'admin::marketplace.sellers.index'
+                ])->name('admin.marketplace.sellers.index');
+
+            });
+
 
             // Catalog Routes
             Route::prefix('catalog')->group(function () {

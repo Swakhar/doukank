@@ -47,6 +47,7 @@ class RegistrationController extends Controller
      */
     public function show()
     {
+
         return view($this->_config['view']);
     }
 
