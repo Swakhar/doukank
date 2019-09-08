@@ -53,7 +53,7 @@
 
             <div class="signup-confirm">
                 <span class="checkbox">
-                    <input type="checkbox" id="checkbox2" name="is_seller">
+                    <input type="checkbox" id="checkbox2" name="is_seller" >
                     <label class="checkbox-view" for="checkbox2"></label>
                     <span>
                        {{ __('shop::app.customer.signup-form.seller-message') }}

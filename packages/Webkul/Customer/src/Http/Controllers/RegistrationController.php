@@ -89,11 +89,9 @@ class RegistrationController extends Controller
         // this block will handle creating a store, and assigning it to the newly created seller.
         // TODO: will be moved later to a separate package, now just to pass the test
 
-        if($request->get('is_seller') == 1){
+        if($request->input('is_seller')){
 
-            $store = Store::create([
-                'url' => $request->get('store-url')
-            ]);
+            $store = Store::create();
 
             $data['store_id'] = $store->id;
 

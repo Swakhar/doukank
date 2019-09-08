@@ -14,7 +14,7 @@ class AddStoreIdToCustomersTable extends Migration
     public function up()
     {
         Schema::table('customers', function (Blueprint $table) {
-            $table->unsignedBigInteger('store_id')->default(0);
+            $table->unsignedInteger('store_id')->nullable();
 
             $table->foreign('store_id')->references('id')->on('stores')->onDelete('cascade');
         });
