@@ -8,7 +8,7 @@ use Webkul\Customer\Models\Customer;
 class Store extends Model
 {
 
-    protected $fillable = ['url'];
+    protected $guarded = [];
 
     public function sellers(){
 

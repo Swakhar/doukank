@@ -26,6 +26,7 @@ class SellerController extends Controller
         $sellers = Customer::where('store_id', '<>', 0)->get();
 
         return view('admin::marketplace.sellers.index', compact('sellers'));
+
     }
 
 }

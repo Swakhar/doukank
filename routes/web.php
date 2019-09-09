@@ -12,6 +12,6 @@
 */
 
 
-Route::get('/{store}', function (\App\Store $store){
-    return $store->url;
-});
+Route::get('/{store}', 'StoreController@show');
+
+Route::patch('/{store}/edit', 'StoreController@update');
