@@ -91,7 +91,9 @@ class RegistrationController extends Controller
 
         if($request->input('is_seller')){
 
-            $store = Store::create();
+            $store = Store::create([
+                'url' => $request->get('store_url')
+            ]);
 
             $data['store_id'] = $store->id;
 

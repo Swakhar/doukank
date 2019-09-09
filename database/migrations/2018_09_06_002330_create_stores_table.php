@@ -15,7 +15,7 @@ class CreateStoresTable extends Migration
     {
         Schema::create('stores', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('url')->nullable();
+            $table->string('url')->unique();
             $table->string('title')->nullable();
             $table->boolean('is_active')->default(0);
             $table->timestamps();

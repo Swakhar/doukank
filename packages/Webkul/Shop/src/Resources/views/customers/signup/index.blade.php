@@ -56,9 +56,15 @@
                     <input type="checkbox" id="checkbox2" name="is_seller" >
                     <label class="checkbox-view" for="checkbox2"></label>
                     <span>
-                       {{ __('shop::app.customer.signup-form.seller-message') }}
+                       {{ __('shop::app.customer.signup-form.seller_message') }}
                     </span>
                 </span>
+            </div>
+
+            <div class="control-group" :class="[errors.has('store_url') ? 'has-error' : '']">
+                <label for="store_url">{{ __('shop::app.customer.signup-form.store_url') }}</label>
+                <input type="text" class="control" name="store_url" v-validate="'required|min:6'" value="{{ old('store_url') }}">
+                <span class="control-error" v-if="errors.has('store_url')">@{{ errors.first('store_url') }}</span>
             </div>
 
 {{--            <div class="signup-confirm" :class="[errors.has('agreement') ? 'has-error' : '']">--}}

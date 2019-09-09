@@ -87,4 +87,30 @@ class ManageSellersTest extends TestCase
 
     }
 
+    /** @test */
+    function user_can_create_and_see_a_store(){
+
+        $this->seed();
+
+        $this->post('customer/register', [
+            'first_name' => 'khaled',
+            'last_name' => 'badenjki',
+            'email' => 'khaled@badenjki.co',
+            'password' => '123123',
+            'password_confirmation' => '123123',
+            'is_seller' => '1',
+            'store_url' => 'abdo-store'
+        ])->assertRedirect('/customer/login');
+
+        $this->post('/customer/login', [
+            'email' => 'khaled@badenjki.co',
+            'password' => '123123',
+        ])->assertStatus(302)->assertRedirect('/customer/account/profile');
+
+        $store = Store::find(1)->first();
+
+        $this->get($store->path())->assertStatus(302);
+
+    }
+
 }

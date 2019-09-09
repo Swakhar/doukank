@@ -10,3 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+Route::get('/{store}', function (\App\Store $store){
+    return $store->url;
+});

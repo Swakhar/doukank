@@ -28,4 +28,15 @@ class Store extends Model
 
     }
 
+    public function path(){
+
+        return '/' . $this->url;
+
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'url';
+    }
+
 }
