@@ -39,6 +39,12 @@
                 <span class="control-error" v-if="errors.has('email')">@{{ errors.first('email') }}</span>
             </div>
 
+            <div class="control-group" :class="[errors.has('phone') ? 'has-error' : '']">
+                <label for="phone" class="required">{{ __('shop::app.customer.signup-form.phone') }}</label>
+                <input type="number" class="control" name="phone" v-validate="'required|phone'" value="{{ old('phone') }}" data-vv-as="&quot;{{ __('shop::app.customer.signup-form.phone') }}&quot;">
+                <span class="control-error" v-if="errors.has('phone')">@{{ errors.first('phone') }}</span>
+            </div>
+
             <div class="control-group" :class="[errors.has('password') ? 'has-error' : '']">
                 <label for="password" class="required">{{ __('shop::app.customer.signup-form.password') }}</label>
                 <input type="password" class="control" name="password" v-validate="'required|min:6'" ref="password" value="{{ old('password') }}" data-vv-as="&quot;{{ __('shop::app.customer.signup-form.password') }}&quot;">
@@ -63,7 +69,7 @@
 
             <div class="control-group" :class="[errors.has('store_url') ? 'has-error' : '']">
                 <label for="store_url">{{ __('shop::app.customer.signup-form.store_url') }}</label>
-                <input type="text" class="control" name="store_url" v-validate="'required|min:6'" value="{{ old('store_url') }}">
+                <input type="text" class="control" name="store_url" value="{{ old('store_url') }}">
                 <span class="control-error" v-if="errors.has('store_url')">@{{ errors.first('store_url') }}</span>
             </div>
 

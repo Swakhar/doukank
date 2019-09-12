@@ -17,6 +17,8 @@ return [
         'orders' => 'الأوامر',
         'shipments' => 'الشحنات',
         'invoices' => 'الفواتير',
+        'marketplace' => 'المتاجر',
+        'sellers' => 'البائعين',
         'catalog' => 'فهرس',
         'products' => 'المنتجات',
         'categories' => 'الفئات',

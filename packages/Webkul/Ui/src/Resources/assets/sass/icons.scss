@@ -17,6 +17,12 @@
     @extend %menu-properties;
     background-image: url("../images/Icon-Sales.svg");
 }
+
+.marketplace-icon {
+    @extend %menu-properties;
+    background-image: url("../images/Icon-Sales.svg");
+}
+
 .catalog-icon {
     @extend %menu-properties;
     background-image: url("../images/Icon-Catalog.svg");

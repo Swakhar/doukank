@@ -64,6 +64,7 @@ class RegistrationController extends Controller
             'last_name' => 'string|required',
             'email' => 'email|required|unique:customers,email',
             'password' => 'confirmed|min:6|required',
+            'phone' => 'required',
         ]);
 
         $data = request()->input();
@@ -98,7 +99,6 @@ class RegistrationController extends Controller
             $data['store_id'] = $store->id;
 
         }
-
         // end of block
 
         $customer = $this->customer->create($data);

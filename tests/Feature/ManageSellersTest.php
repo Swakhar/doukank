@@ -18,11 +18,7 @@ class ManageSellersTest extends TestCase
     /** @test */
     function a_user_can_be_a_seller(){
 
-        $this->withoutExceptionHandling();
-
         $this->seed();
-
-        $this->assertTrue(true);
 
         $this->post('customer/register', [
             'first_name' => 'abdo',
@@ -31,7 +27,8 @@ class ManageSellersTest extends TestCase
             'password' => '123123',
             'password_confirmation' => '123123',
             'is_seller' => '1',
-            'store_url' => 'abdo-store'
+            'store_url' => 'abdo-store',
+            'phone' => '123123123',
         ])->assertRedirect('/customer/login');
 
         $this->assertDatabaseHas('customers', [
@@ -74,7 +71,7 @@ class ManageSellersTest extends TestCase
             'password' => '123123',
             'password_confirmation' => '123123',
             'is_seller' => '1',
-            'store_url' => 'abdo-store'
+            'store_url' => 'abdo-store',
         ]);
 
         // login as an admin
@@ -99,7 +96,8 @@ class ManageSellersTest extends TestCase
             'password' => '123123',
             'password_confirmation' => '123123',
             'is_seller' => '1',
-            'store_url' => 'abdo-store'
+            'store_url' => 'abdo-store',
+            'phone' => '123123123',
         ])->assertRedirect('/customer/login');
 
         $this->post('/customer/login', [
@@ -127,7 +125,8 @@ class ManageSellersTest extends TestCase
             'password' => '123123',
             'password_confirmation' => '123123',
             'is_seller' => '1',
-            'store_url' => 'abdo-store'
+            'store_url' => 'abdo-store',
+            'phone' => '123123123',
         ])->assertRedirect('/customer/login');
 
         $this->post('/customer/login', [
@@ -144,6 +143,13 @@ class ManageSellersTest extends TestCase
         $store->refresh();
 
         $this->assertEquals($store->title, 'Khaled Store');
+
+    }
+
+    /** @test */
+    function a_product_can_belong_to_a_store(){
+
+        $this->assertTrue(true);
 
     }
 

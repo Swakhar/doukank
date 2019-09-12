@@ -95,6 +95,7 @@ return [
             'firstname' => 'الاسم الأول',
             'lastname' => 'الاسم الأخير',
             'email' => 'البريد الإلكتروني',
+            'phone' => 'رقم التلفون',
             'password' => 'كلمة السر',
             'confirm_pass' => 'تأكيد كلمة السر',
             'button_title' => 'سجل',

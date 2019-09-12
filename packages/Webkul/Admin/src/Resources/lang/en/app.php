@@ -18,6 +18,8 @@ return [
         'orders' => 'Orders',
         'shipments' => 'Shipments',
         'invoices' => 'Invoices',
+        'marketplace' => 'Marketplace',
+        'sellers' => 'Sellers',
         'catalog' => 'Catalog',
         'products' => 'Products',
         'categories' => 'Categories',
