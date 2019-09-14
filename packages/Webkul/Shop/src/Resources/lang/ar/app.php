@@ -5,11 +5,15 @@ return [
         'my-account' => 'حسابي',
         'profile' => 'التوصيف',
         'address' => 'العنوان',
-        'reviews' => 'باء-الاستعراضات',
+        'reviews' => 'المراجعات',
         'wishlist' => 'قائمة الأماني',
         'orders' => 'الأوامر',
         'my-store' => 'متجري',
-        'become-seller' => 'ابدأ البيع'
+        'become-seller' => 'ابدأ البيع',
+        'store-profile' => 'التوصيف',
+        'store-products' => 'المنتجات',
+        'store-orders' => 'الطلبات',
+        'store-reviews' => 'المراجعات',
     ],
 
     'common' => [
@@ -17,7 +21,7 @@ return [
     ],
 
     'home' => [
-        'page-title' => 'الحقائب إلى البيت',
+        'page-title' => 'دكانك - الرئيسية',
         'featured-products' => 'المنتجات البارزة',
         'new-products' => 'المنتجات الجديدة',
         'verify-email' => 'تحقق من حساب بريدك الإلكتروني',
@@ -65,7 +69,7 @@ return [
 
     'search' => [
         'no-results' => 'لا توجد نتائج',
-        'page-title' => 'Bagisto - Search',
+        'page-title' => 'دكانك - بحث',
         'found-results' => 'تم العثور على نتائج البحث',
         'found-result' => 'تم العثور على نتيجة البحث'
     ],
@@ -291,6 +295,16 @@ return [
 
                 'view' => [
                     'page-tile' => 'باء-الاستعراض #:id',
+                ]
+            ],
+            'store' => [
+                'become-seller' => [
+                    'title' => 'ابدأ البيع',
+                    'page-title' => 'زبون - أبدأ البيع',
+                ],
+                'my-store' => [
+                    'title' => 'دكاني',
+                    'page-title' => 'البائع - دكاني'
                 ]
             ]
         ]

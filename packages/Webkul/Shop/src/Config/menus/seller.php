@@ -37,9 +37,25 @@ return [
         'route' => 'customer.profile.index',
         'sort' => 2
     ], [
-        'key' => 'store.start',
-        'name' => 'shop::app.layouts.become-seller',
+        'key' => 'store.profile',
+        'name' => 'shop::app.layouts.store-profile',
         'route' => 'seller.register.index',
+        'sort' => 1,
+    ], [
+        'key' => 'store.products',
+        'name' => 'shop::app.layouts.store-products',
+        'route' => 'seller.register.index',
+        'sort' => 2
+    ], [
+        'key' => 'store.orders',
+        'name' => 'shop::app.layouts.store-orders',
+        'route' => 'seller.register.index',
+        'sort' => 3
+    ], [
+        'key' => 'store.reviews',
+        'name' => 'shop::app.layouts.store-reviews',
+        'route' => 'seller.register.index',
+        'sort' => 4
     ]
 
 ];

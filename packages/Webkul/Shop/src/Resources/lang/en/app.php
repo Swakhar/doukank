@@ -12,7 +12,11 @@ return [
         'wishlist' => 'Wishlist',
         'orders' => 'Orders',
         'my-store' => 'My Store',
-        'become-seller' => 'Become a Seller'
+        'become-seller' => 'Become a Seller',
+        'store-profile' => 'Profile',
+        'store-products' => 'Products',
+        'store-orders' => 'Orders',
+        'store-reviews' => 'Reviews',
     ],
 
     'common' => [
@@ -20,7 +24,7 @@ return [
     ],
 
     'home' => [
-        'page-title' => 'Bagisto - Home',
+        'page-title' => 'Doukank - Home',
         'featured-products' => 'Featured Products',
         'new-products' => 'New Products',
         'verify-email' => 'Verify Your Email Account',
@@ -61,14 +65,14 @@ return [
         'subscribed' => 'You Are Now Subscribed To Subscription Emails',
         'not-subscribed' => 'You Cannot Be Subscribed To Subscription Emails, Try Again After Some time',
         'already' => 'You Are Already Subscribed To Our Subscription List',
-        'unsubscribed' => 'You Are Unsubscribed From Bagisto Subscription Mails',
+        'unsubscribed' => 'You Are Unsubscribed From Doukank Subscription Mails',
         'already-unsub' => 'You Are Already Unsubscribed',
         'not-subscribed' => 'Error! Mail Cannot Be Sent Currently, Please Try Again Later'
     ],
 
     'search' => [
         'no-results' => 'No Results Found',
-        'page-title' => 'Bagisto - Search',
+        'page-title' => 'Doukank - Search',
         'found-results' => 'Search Results Found',
         'found-result' => 'Search Result Found'
     ],
@@ -298,6 +302,17 @@ return [
 
                 'view' => [
                     'page-tile' => 'Review #:id',
+                ]
+            ],
+
+            'store' => [
+                'become-seller' => [
+                    'title' => 'Become a Seller',
+                    'page-title' => 'Customer - Become a Seller',
+                ],
+                'my-store' => [
+                    'title' => 'My Store',
+                    'page-title' => 'Seller - My Store'
                 ]
             ]
         ]

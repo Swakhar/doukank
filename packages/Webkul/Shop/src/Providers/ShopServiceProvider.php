@@ -66,7 +66,7 @@ class ShopServiceProvider extends ServiceProvider
         view()->composer('shop::customers.account.partials.sidemenu', function ($view) {
             $tree = Tree::create();
 
-            foreach (config('menu.customer') as $item) {
+            foreach (config('menu.seller') as $item) {
                 $tree->add($item, 'menu');
             }
 
@@ -74,6 +74,7 @@ class ShopServiceProvider extends ServiceProvider
 
             $view->with('menu', $tree);
         });
+
     }
 
     /**
@@ -84,7 +85,10 @@ class ShopServiceProvider extends ServiceProvider
     protected function registerConfig()
     {
         $this->mergeConfigFrom(
-            dirname(__DIR__) . '/Config/menu.php', 'menu.customer'
+            dirname(__DIR__) . '/Config/menus/customer.php', 'menu.customer'
+        );
+        $this->mergeConfigFrom(
+            dirname(__DIR__) . '/Config/menus/seller.php', 'menu.seller'
         );
     }
 }
