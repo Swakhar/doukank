@@ -11,6 +11,8 @@ return [
         'reviews' => 'Reviews',
         'wishlist' => 'Wishlist',
         'orders' => 'Orders',
+        'my-store' => 'My Store',
+        'become-seller' => 'Become a Seller'
     ],
 
     'common' => [

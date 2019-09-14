@@ -36,13 +36,13 @@ return [
         'name' => 'admin::app.layouts.marketplace',
         'route' => 'admin.marketplace.sellers.index',
         'sort' => 3,
-        'icon-class' => 'marketplace-icon'
+        'icon-class' => 'catalog-icon'
     ],[
         'key' => 'marketplace.sellers',
         'name' => 'admin::app.layouts.sellers',
         'route' => 'admin.marketplace.sellers.index',
         'sort' => 1,
-        'icon-class' => 'marketplace-icon'
+        'icon-class' => ''
     ],
     [
         'key' => 'catalog',

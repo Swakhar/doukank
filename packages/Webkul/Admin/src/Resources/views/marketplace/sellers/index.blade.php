@@ -1,14 +1,14 @@
 @extends('admin::layouts.content')
 
 @section('page_title')
-   sellers
+    {{ __('admin::app.marketplace.sellers.title') }}
 @stop
 
 @section('content')
     <div class="content">
         <div class="page-header">
             <div class="page-title">
-                <h1>Sellers</h1>
+                <h1>{{ __('admin::app.marketplace.sellers.title') }}</h1>
             </div>
 
             <div class="page-action">
@@ -22,9 +22,8 @@
         </div>
 
         <div class="page-content">
-            @foreach($sellers as $seller)
-                <li>{{ $seller->first_name }} , {{ $seller->store->is_active }}</li>
-            @endforeach
+            @inject('sellerGrid', 'Webkul\Admin\DataGrids\SellerDataGrid')
+            {!! $sellerGrid->render() !!}
         </div>
     </div>
 

@@ -8,6 +8,8 @@ return [
         'reviews' => 'باء-الاستعراضات',
         'wishlist' => 'قائمة الأماني',
         'orders' => 'الأوامر',
+        'my-store' => 'متجري',
+        'become-seller' => 'ابدأ البيع'
     ],
 
     'common' => [

@@ -204,6 +204,12 @@ Route::group(['middleware' => ['web']], function () {
                     'view' => 'admin::marketplace.sellers.index'
                 ])->name('admin.marketplace.sellers.index');
 
+                Route::get('sellers/edit/{id}', 'Webkul\Admin\Http\Controllers\Marketplace\SellerController@edit')->defaults('_config',[
+                    'view' => 'admin::marketplace.sellers.edit'
+                ])->name('admin.marketplace.sellers.edit');
+
+                Route::post('/sellers/delete/{id}', 'Webkul\Admin\Http\Controllers\Marketplace\SellerController@destroy')->name('admin.marketplace.sellers.delete');
+
             });
 
 

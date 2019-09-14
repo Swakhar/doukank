@@ -287,5 +287,20 @@ Route::group(['middleware' => ['web', 'locale', 'theme', 'currency']], function 
     });
     //customer routes end here
 
+    //seller routes start here
+    Route::prefix('seller')->group(function () {
+        // Auth Routes
+        Route::group(['middleware' => ['customer']], function () {
+            //seller registration
+            //seller registration form
+            Route::get('/register', 'Badenjki\Seller\Http\Controllers\RegistrationController@show')->defaults('_config', [
+                'view' => 'shop::sellers.signup.index'
+            ])->name('seller.register.index');
+        });
+
+
+    });
+
+
     Route::fallback('Webkul\Shop\Http\Controllers\HomeController@notFound');
 });

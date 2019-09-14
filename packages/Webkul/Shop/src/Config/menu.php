@@ -31,6 +31,15 @@ return [
         'name' => 'shop::app.layouts.orders',
         'route' =>'customer.orders.index',
         'sort' => 5
+    ], [
+        'key' => 'store',
+        'name' => 'shop::app.layouts.my-store',
+        'route' => 'customer.profile.index',
+        'sort' => 2
+    ], [
+        'key' => 'store.start',
+        'name' => 'shop::app.layouts.become-seller',
+        'route' => 'seller.register.index',
     ]
 
 ];

@@ -1,0 +1,27 @@
+{
+    "name": "badenjki/seller",
+    "description": "This package will handle processes of multi sellers",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Khaled Badenjki",
+            "email": "khaled@badenjki.co"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Badenjki\\Seller\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Badenjki\\Seller\\Providers\\SellerServiceProvider"
+            ],
+            "aliases": {}
+        }
+    },
+    "minimum-stability": "dev"
+}
