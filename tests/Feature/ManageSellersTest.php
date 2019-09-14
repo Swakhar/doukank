@@ -68,6 +68,7 @@ class ManageSellersTest extends TestCase
             'first_name' => 'abdo',
             'last_name' => 'badenjki',
             'email' => 'abdo@badenjki.co',
+            'phone' => '0123123123',
             'password' => '123123',
             'password_confirmation' => '123123',
             'is_seller' => '1',
@@ -80,7 +81,7 @@ class ManageSellersTest extends TestCase
             'password' => 'admin123'
         ])->assertRedirect('admin/dashboard');
 
-        $this->get('admin/marketplace/sellers');
+        $this->get('admin/marketplace/sellers')->assertSee('abdo');
 
     }
 
@@ -146,11 +147,10 @@ class ManageSellersTest extends TestCase
 
     }
 
-    /** @test */
-    function a_product_can_belong_to_a_store(){
-
-        $this->assertTrue(true);
-
-    }
+//    function a_product_can_belong_to_a_store(){
+//
+//        $this->assertTrue(true);
+//
+//    }
 
 }

@@ -2,6 +2,7 @@
 
 namespace Badenjki\Seller\Providers;
 
+use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 
 class SellerServiceProvider extends ServiceProvider
@@ -11,9 +12,9 @@ class SellerServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(Router $router)
     {
-
+        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 
     /**

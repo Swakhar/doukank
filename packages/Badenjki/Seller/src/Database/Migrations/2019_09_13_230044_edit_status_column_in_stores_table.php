@@ -15,7 +15,7 @@ class EditStatusColumnInStoresTable extends Migration
     {
         Schema::table('stores', function (Blueprint $table) {
             $table->dropColumn('is_active');
-            $table->tinyInteger('status')->after('title');
+            $table->tinyInteger('status')->after('title')->default(0);
         });
     }
 
