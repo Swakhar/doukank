@@ -41,7 +41,7 @@
 
             <div class="control-group" :class="[errors.has('phone') ? 'has-error' : '']">
                 <label for="phone" class="required">{{ __('shop::app.customer.signup-form.phone') }}</label>
-                <input type="number" class="control" name="phone" value="{{ old('phone') }}" data-vv-as="&quot;{{ __('shop::app.customer.signup-form.phone') }}&quot;">
+                <input type="tel" class="control" name="phone" value="{{ old('phone') }}" data-vv-as="&quot;{{ __('shop::app.customer.signup-form.phone') }}&quot;">
                 <span class="control-error" v-if="errors.has('phone')">@{{ errors.first('phone') }}</span>
             </div>
 
@@ -55,22 +55,6 @@
                 <label for="password_confirmation" class="required">{{ __('shop::app.customer.signup-form.confirm_pass') }}</label>
                 <input type="password" class="control" name="password_confirmation"  v-validate="'required|min:6|confirmed:password'" data-vv-as="&quot;{{ __('shop::app.customer.signup-form.confirm_pass') }}&quot;">
                 <span class="control-error" v-if="errors.has('password_confirmation')">@{{ errors.first('password_confirmation') }}</span>
-            </div>
-
-            <div class="signup-confirm">
-                <span class="checkbox">
-                    <input type="checkbox" id="checkbox2" name="is_seller" >
-                    <label class="checkbox-view" for="checkbox2"></label>
-                    <span>
-                       {{ __('shop::app.customer.signup-form.seller_message') }}
-                    </span>
-                </span>
-            </div>
-
-            <div class="control-group" :class="[errors.has('store_url') ? 'has-error' : '']">
-                <label for="store_url">{{ __('shop::app.customer.signup-form.store_url') }}</label>
-                <input type="text" class="control" name="store_url" value="{{ old('store_url') }}">
-                <span class="control-error" v-if="errors.has('store_url')">@{{ errors.first('store_url') }}</span>
             </div>
 
 {{--            <div class="signup-confirm" :class="[errors.has('agreement') ? 'has-error' : '']">--}}

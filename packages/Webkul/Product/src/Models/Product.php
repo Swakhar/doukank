@@ -2,6 +2,7 @@
 
 namespace Webkul\Product\Models;
 
+use Badenjki\Seller\Models\Store;
 use Illuminate\Database\Eloquent\Model;
 use Webkul\Attribute\Models\AttributeFamilyProxy;
 use Webkul\Category\Models\CategoryProxy;
@@ -315,7 +316,7 @@ class Product extends Model implements ProductContract
 
     public function store(){
 
-        return $this->belongsTo('App\Store');
+        return $this->belongsTo(Store::class);
 
     }
 }

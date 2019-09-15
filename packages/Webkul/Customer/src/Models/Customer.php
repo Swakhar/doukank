@@ -2,7 +2,7 @@
 
 namespace Webkul\Customer\Models;
 
-use App\Store;
+use Badenjki\Seller\Models\Store;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
@@ -134,7 +134,17 @@ class Customer extends Authenticatable implements CustomerContract, JWTSubject
 
     public function isSeller(){
 
-        return $this->store ? true : false;
+        return $this->store_id ? true : false;
+
+    }
+
+    public function createStore($params){
+
+        $store = Store::create($params);
+
+        $this->store_id = $store->id;
+
+        return $store;
 
     }
 }

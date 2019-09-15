@@ -200,15 +200,19 @@ Route::group(['middleware' => ['web']], function () {
             Route::prefix('marketplace')->group(function () {
 
                 // Sales Order Routes
-                Route::get('/sellers', 'Webkul\Admin\Http\Controllers\Marketplace\SellerController@index')->defaults('_config', [
+                Route::get('/sellers', 'Badenjki\Seller\Http\Controllers\SellerController@index')->defaults('_config', [
                     'view' => 'admin::marketplace.sellers.index'
                 ])->name('admin.marketplace.sellers.index');
 
-                Route::get('sellers/edit/{id}', 'Webkul\Admin\Http\Controllers\Marketplace\SellerController@edit')->defaults('_config',[
+                Route::get('sellers/edit/{id}', 'Badenjki\Seller\Http\Controllers\SellerController@edit')->defaults('_config',[
                     'view' => 'admin::marketplace.sellers.edit'
                 ])->name('admin.marketplace.sellers.edit');
 
-                Route::post('/sellers/delete/{id}', 'Webkul\Admin\Http\Controllers\Marketplace\SellerController@destroy')->name('admin.marketplace.sellers.delete');
+                Route::put('/sellers/edit/{id}', 'Badenjki\Seller\Http\Controllers\SellerController@update')->defaults('_config', [
+                    'redirect' => 'admin.marketplace.sellers.index'
+                ])->name('admin.catalog.products.update');
+
+                Route::post('/sellers/delete/{id}', 'Badenjki\Seller\Http\Controllers\SellerController@destroy')->name('admin.marketplace.sellers.delete');
 
             });
 

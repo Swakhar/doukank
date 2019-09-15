@@ -12,6 +12,3 @@
 */
 
 
-Route::get('/{store}', 'StoreController@show');
-
-Route::patch('/{store}/edit', 'StoreController@update');

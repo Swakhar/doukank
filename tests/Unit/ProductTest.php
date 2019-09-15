@@ -2,7 +2,7 @@
 
 namespace Tests\Unit;
 
-use App\Store;
+use Badenjki\Seller\Models\Store;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -16,22 +16,13 @@ class ProductTest extends TestCase
     /** @test */
     function it_can_belong_to_a_store(){
 
-        $this->withoutExceptionHandling();
+        $store = factory(Store::class)->create();
 
-        $this->seed();
-
-        $store = Store::create([
-            'url' => 'sample-store'
-        ]);
-
-        $product = Product::create([
-            'sku' => 'sample-product',
-            'type' => 'simple',
-            'attribute_family_id' => 1,
+        $product = factory(Product::class)->create([
             'store_id' => $store->id,
         ]);
 
-        $this->assertInstanceOf(Store::class, $product->store);
+        $this->assertEquals($store->title, $product->store->title);
 
     }
 

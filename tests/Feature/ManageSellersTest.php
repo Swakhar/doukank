@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Store;
+use Badenjki\Seller\Models\Store;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Artisan;
 use Tests\TestCase;
@@ -87,6 +87,8 @@ class ManageSellersTest extends TestCase
 
     /** @test */
     function a_user_can_create_and_see_a_store(){
+
+        $this->withoutExceptionHandling();
 
         $this->seed();
 

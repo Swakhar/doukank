@@ -1,9 +1,8 @@
 <?php
 
-namespace App;
+namespace Badenjki\Seller\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Webkul\Customer\Models\Customer;
 
 class Store extends Model
 {
@@ -12,7 +11,7 @@ class Store extends Model
 
     public function sellers(){
 
-        return $this->hasMany(Customer::class)->where('store_id', '<>', '0');
+        return $this->hasMany(Seller::class);
 
     }
 

@@ -1,12 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Badenjki\Seller\Http\Controllers;
 
-use App\Store;
+use Badenjki\Seller\Models\Store;
 use Illuminate\Http\Request;
 
 class StoreController extends Controller
 {
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -35,7 +38,7 @@ class StoreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Store::create($request->all());
     }
 
     /**

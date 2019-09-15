@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStoreLinksTable extends Migration
+class EditPhoneColumnInCustomersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class CreateStoreLinksTable extends Migration
      */
     public function up()
     {
-        Schema::create('store_links', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+        Schema::table('customers', function (Blueprint $table) {
+            $table->string('phone')->nullable(false)->change();
         });
     }
 
@@ -26,6 +25,8 @@ class CreateStoreLinksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('store_links');
+        Schema::table('customers', function (Blueprint $table) {
+            //
+        });
     }
 }
