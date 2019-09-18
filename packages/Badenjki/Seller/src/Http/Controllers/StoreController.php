@@ -4,11 +4,23 @@ namespace Badenjki\Seller\Http\Controllers;
 
 use Badenjki\Seller\Models\Store;
 use Illuminate\Http\Request;
+use Webkul\Customer\Repositories\CustomerRepository;
 
 class StoreController extends Controller
 {
 
+    protected $_config;
 
+    protected $customer;
+
+    public function __construct(CustomerRepository $customer)
+    {
+
+        $this->customer = $customer;
+
+        $this->_config = request('_config');
+
+    }
 
     /**
      * Display a listing of the resource.
@@ -27,7 +39,11 @@ class StoreController extends Controller
      */
     public function create()
     {
-        //
+
+        $customer = $this->customer->find(auth()->guard('customer')->user()->id);
+
+        return view($this->_config['view'], compact('customer'));
+
     }
 
     /**
@@ -38,7 +54,11 @@ class StoreController extends Controller
      */
     public function store(Request $request)
     {
-        Store::create($request->all());
+
+        $customer = auth()->guard('customer')->user();
+
+        $customer->createStore($request->all());
+
     }
 
     /**
@@ -49,7 +69,7 @@ class StoreController extends Controller
      */
     public function show(Store $store)
     {
-        return $store->url;
+        return $store->title;
     }
 
     /**

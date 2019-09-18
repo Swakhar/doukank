@@ -16,8 +16,9 @@ class CustomerTest extends TestCase
     /** @test */
     function it_can_have_a_store(){
 
-        $customer = $this->signIn();
+        $this->seed();
 
+        $customer = $this->signIn();
         // before creating a store, the customer is not a seller
         $this->assertFalse($customer->isSeller());
 

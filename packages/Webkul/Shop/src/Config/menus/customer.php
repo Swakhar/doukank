@@ -39,7 +39,7 @@ return [
     ], [
         'key' => 'store.start',
         'name' => 'shop::app.layouts.become-seller',
-        'route' => 'seller.register.index',
+        'route' => 'customer.store.index',
         'sort' => 1,
     ]
 

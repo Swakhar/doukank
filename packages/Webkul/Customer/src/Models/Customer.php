@@ -142,7 +142,11 @@ class Customer extends Authenticatable implements CustomerContract, JWTSubject
 
         $store = Store::create($params);
 
-        $this->store_id = $store->id;
+        $this->update([
+            'store_id' => $store->id
+        ]);
+
+//        dd($this);
 
         return $store;
 

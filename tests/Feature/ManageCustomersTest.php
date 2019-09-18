@@ -14,7 +14,7 @@ class ManageCustomersTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    function customer_phone_number_is_required(){
+    function a_customer_phone_number_is_required(){
 
         $this->seed();
 
@@ -25,18 +25,39 @@ class ManageCustomersTest extends TestCase
     }
 
     /** @test */
-    function customer_can_become_a_seller_by_creating_a_store(){
+    function a_customer_can_become_a_seller_by_creating_a_store(){
 
         $this->seed();
 
-        $customer = $this->signIn();
+        // create a customer
+        $user = $this->signIn();
 
-        $store = factory(Store::class)->raw();
+        // by default, the customer is not a seller
+        $this->assertFalse($user->isSeller());
 
-        $this->post(route('seller.store.store'), $store);
+        // when a customer creates a store,
+        $this->post('/stores/create', $store = factory(Store::class)->raw());
 
+        // they become a seller
+        $this->assertTrue($user->refresh()->isSeller());
+
+        // and the store is added to the database under table 'stores'.
         $this->assertDatabaseHas('stores', $store);
 
     }
+
+    /** @test */
+    function a_guest_can_see_a_store(){
+
+        $this->seed();
+
+        $store = factory(Store::class)->create();
+
+        $this->get($store->path())->assertSuccessful();
+
+        $this->get($store->path())->assertSee($store->title);
+
+    }
+
 
 }

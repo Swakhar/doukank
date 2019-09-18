@@ -160,7 +160,7 @@ Route::group(['middleware' => ['web', 'locale', 'theme', 'currency']], function 
 
         //registration form store
         Route::post('register', 'Webkul\Customer\Http\Controllers\RegistrationController@create')->defaults('_config', [
-            'redirect' => 'customer.profile.index',
+            'redirect' => 'customer.session.index',
         ])->name('customer.register.create');
 
         //verify account
@@ -287,17 +287,25 @@ Route::group(['middleware' => ['web', 'locale', 'theme', 'currency']], function 
     });
     //customer routes end here
 
-    //seller routes start here
-    Route::prefix('seller')->group(function () {
-        // Auth Routes
-        Route::group(['middleware' => ['customer']], function () {
-            //seller registration
-            //seller registration form
-            Route::get('/register', 'Badenjki\Seller\Http\Controllers\RegistrationController@show')->defaults('_config', [
-                'view' => 'shop::sellers.signup.index'
-            ])->name('seller.register.index');
-        });
+    Route::group(['middleware' => ['web', 'locale', 'theme', 'currency']], function () {
 
+        Route::get('/{store}', 'Badenjki\Seller\Http\Controllers\StoreController@show');
+
+        Route::group(['middleware' => ['customer']], function () {
+
+            Route::get('/stores/create', 'Badenjki\Seller\Http\Controllers\StoreController@create')->defaults('_config', [
+                'view' => 'shop::customers.account.store.index'
+            ])->name('customer.store.index');
+
+            Route::post('/stores/create', 'Badenjki\Seller\Http\Controllers\StoreController@store')->defaults('_config',[
+                'redirect' => 'customer.store.index'
+            ])->name('customer.store.create');
+
+            Route::patch('/stores/edit/{store}', 'Badenjki\Seller\Http\Controllers\StoreController@update')->defaults('_config',[
+                'redirect' => 'customer.store.index'
+            ])->name('customer.store.edit');
+
+        });
 
     });
 

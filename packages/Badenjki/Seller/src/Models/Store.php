@@ -17,13 +17,19 @@ class Store extends Model
 
     public function activate(){
 
-        $this->is_active = 1;
+        $this->status = 1;
 
     }
 
     public function inactivate(){
 
-        $this->is_active = 0;
+        $this->status = 0;
+
+    }
+
+    public function isActive(){
+
+        return $this->status;
 
     }
 
