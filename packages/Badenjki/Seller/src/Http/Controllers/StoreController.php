@@ -29,7 +29,9 @@ class StoreController extends Controller
      */
     public function index()
     {
-        //
+        $customer = $this->customer->find(auth()->guard('customer')->user()->id);
+
+        return view($this->_config['view'], compact('customer'));
     }
 
     /**

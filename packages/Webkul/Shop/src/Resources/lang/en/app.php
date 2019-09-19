@@ -313,6 +313,22 @@ return [
                 'my-store' => [
                     'title' => 'My Store',
                     'page-title' => 'Seller - My Store'
+                ],
+                'index' => [
+                    'title' => 'My store',
+                    'page-title' => 'My Store',
+                    'edit' => 'Edit',
+                    'pending' => 'Your store is under review. We will notify you once accepted',
+                    'empty' => 'Your online store is few steps away! start selling products and making money today',
+                    'add' => 'Become a seller',
+                ],
+                'create' => [
+                    'title' => 'Create a store',
+                    'page-title' => 'Create a store',
+                    'store-title' => 'Store Name',
+                    'url' => 'Store url',
+                    'phone' => 'Business Phone',
+                    'submit' => 'Save Store'
                 ]
             ]
         ]
