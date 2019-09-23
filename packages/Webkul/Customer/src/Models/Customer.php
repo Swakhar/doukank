@@ -138,15 +138,15 @@ class Customer extends Authenticatable implements CustomerContract, JWTSubject
 
     }
 
-    public function createStore($params){
+    public function createStore($params, $locale = null){
+
+        $params['locale'] = $locale;
 
         $store = Store::create($params);
 
         $this->update([
             'store_id' => $store->id
         ]);
-
-//        dd($this);
 
         return $store;
 

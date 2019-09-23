@@ -1,14 +1,14 @@
 @extends('admin::layouts.content')
 
 @section('page_title')
-    {{ __('admin::app.marketplace.sellers.title') }}
+    {{ __('admin::app.marketplace.stores.title') }}
 @stop
 
 @section('content')
     <div class="content">
         <div class="page-header">
             <div class="page-title">
-                <h1>{{ __('admin::app.marketplace.sellers.title') }}</h1>
+                <h1>{{ __('admin::app.marketplace.stores.title') }}</h1>
             </div>
 
             <div class="page-action">
@@ -22,7 +22,7 @@
         </div>
 
         <div class="page-content">
-            @inject('sellerGrid', 'Webkul\Admin\DataGrids\SellerDataGrid')
+            @inject('sellerGrid', 'Webkul\Admin\DataGrids\StoreDataGrid')
             {!! $sellerGrid->render() !!}
         </div>
     </div>

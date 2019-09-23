@@ -34,13 +34,13 @@ return [
     ],[
         'key' => 'marketplace',
         'name' => 'admin::app.layouts.marketplace',
-        'route' => 'admin.marketplace.sellers.index',
+        'route' => 'admin.marketplace.stores.index',
         'sort' => 3,
         'icon-class' => 'catalog-icon'
     ],[
         'key' => 'marketplace.sellers',
-        'name' => 'admin::app.layouts.sellers',
-        'route' => 'admin.marketplace.sellers.index',
+        'name' => 'admin::app.layouts.stores',
+        'route' => 'admin.marketplace.stores.index',
         'sort' => 1,
         'icon-class' => ''
     ],

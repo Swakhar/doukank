@@ -20,6 +20,7 @@ return [
         'invoices' => 'Invoices',
         'marketplace' => 'Marketplace',
         'sellers' => 'Sellers',
+        'stores' => 'Stores',
         'catalog' => 'Catalog',
         'products' => 'Products',
         'categories' => 'Categories',
@@ -409,7 +410,11 @@ return [
             'total-due' => 'Total Due',
             'cancel-confirm-msg' => 'Are you sure you want to cancel this order ?'
         ],
-
+        'stores' => [
+            'title' => 'Stores',
+            'edit-title' => 'Edit Store',
+            'save-btn-title' => 'Save',
+        ],
         'invoices' => [
             'title' => 'Invoices',
             'id' => 'Id',

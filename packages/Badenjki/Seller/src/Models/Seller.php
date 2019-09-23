@@ -3,8 +3,8 @@
 namespace Badenjki\Seller\Models;
 
 use Webkul\Customer\Models\Customer;
-
-class Seller extends Customer
+use Badenjki\Seller\Contracts\Seller as SellerContract;
+class Seller extends Customer implements SellerContract
 {
 
     protected $table = 'customers';

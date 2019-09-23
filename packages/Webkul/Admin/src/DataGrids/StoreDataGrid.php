@@ -6,16 +6,16 @@ use Webkul\Ui\DataGrid\DataGrid;
 use DB;
 
 /**
- * SellerDataGrid Class
+ * StoreDataGrid Class
  *
  * @author Khaled Badenjki <m.k.badenjki@gmail.com>
  * @copyright 2019 Doukank Pvt Ltd (https://www.doukank.com)
  */
-class SellerDataGrid extends DataGrid
+class StoreDataGrid extends DataGrid
 {
     protected $sortOrder = 'desc'; //asc or desc
 
-    protected $index = 'seller_id';
+    protected $index = 'store_id';
 
     protected $itemsPerPage = 20;
 
@@ -23,7 +23,7 @@ class SellerDataGrid extends DataGrid
     {
         $queryBuilder = DB::table('customers')
             ->leftJoin('stores', 'customers.store_id', '=', 'stores.id')
-            ->select('customers.id as seller_id', 'stores.title as store_name', 'stores.status as status')
+            ->select('customers.id as seller_id', 'stores.id as store_id', 'stores.title as store_name', 'stores.status as status', 'stores.url as store_url')
             ->addSelect(DB::raw('CONCAT(customers.first_name, " ", customers.last_name) as full_name'))
             ->whereNotNull('customers.store_id');
 
@@ -40,6 +40,7 @@ class SellerDataGrid extends DataGrid
         $this->addFilter('full_name', DB::raw('CONCAT(customers.first_name, " ", customers.last_name)'));
         $this->addFilter('store_name', 'stores.title');
         $this->addFilter('status', 'stores.status');
+        $this->addFilter('store_url', 'stores.url');
 
         $this->setQueryBuilder($queryBuilder);
     }
@@ -47,7 +48,7 @@ class SellerDataGrid extends DataGrid
     public function addColumns()
     {
         $this->addColumn([
-            'index' => 'seller_id',
+            'index' => 'store_id',
             'label' => trans('admin::app.datagrid.id'),
             'type' => 'number',
             'searchable' => false,
@@ -56,17 +57,17 @@ class SellerDataGrid extends DataGrid
         ]);
 
         $this->addColumn([
-            'index' => 'full_name',
-            'label' => trans('admin::app.datagrid.name'),
+            'index' => 'store_name',
+            'label' => trans('admin::app.datagrid.store'),
             'type' => 'string',
             'searchable' => true,
             'sortable' => true,
             'filterable' => true
         ]);
-//
+
         $this->addColumn([
-            'index' => 'store_name',
-            'label' => trans('admin::app.datagrid.store'),
+            'index' => 'full_name',
+            'label' => trans('admin::app.datagrid.name'),
             'type' => 'string',
             'searchable' => true,
             'sortable' => true,
@@ -94,40 +95,40 @@ class SellerDataGrid extends DataGrid
         $this->addAction([
             'type' => 'Edit',
             'method' => 'GET', // use GET request only for redirect purposes
-            'route' => 'admin.marketplace.sellers.edit',
+            'route' => 'admin.marketplace.stores.edit',
             'icon' => 'icon pencil-lg-icon'
         ]);
 
         $this->addAction([
             'type' => 'Delete',
             'method' => 'POST', // use GET request only for redirect purposes
-            'route' => 'admin.marketplace.sellers.delete',
+            'route' => 'admin.marketplace.stores.delete',
             'confirm_text' => trans('ui::app.datagrid.massaction.delete', ['resource' => 'seller']),
             'icon' => 'icon trash-icon'
         ]);
 
         $this->enableAction = true;
     }
-//
-//    public function prepareMassActions() {
-//        $this->addMassAction([
-//            'type' => 'delete',
-//            'label' => 'Delete',
-//            'action' => route('admin.catalog.products.massdelete'),
-//            'method' => 'DELETE'
-//        ]);
-//
-//        $this->addMassAction([
-//            'type' => 'update',
-//            'label' => 'Update Status',
-//            'action' => route('admin.catalog.products.massupdate'),
-//            'method' => 'PUT',
-//            'options' => [
-//                'Active' => 1,
-//                'Inactive' => 0
-//            ]
-//        ]);
-//
-//        $this->enableMassAction = true;
-//    }
+
+    public function prepareMassActions() {
+        $this->addMassAction([
+            'type' => 'delete',
+            'label' => 'Delete',
+            'action' => route('admin.catalog.products.massdelete'),
+            'method' => 'DELETE'
+        ]);
+
+        $this->addMassAction([
+            'type' => 'update',
+            'label' => 'Update Status',
+            'action' => route('admin.catalog.products.massupdate'),
+            'method' => 'PUT',
+            'options' => [
+                'Active' => 1,
+                'Inactive' => 0
+            ]
+        ]);
+
+        $this->enableMassAction = true;
+    }
 }

@@ -3,11 +3,17 @@
 namespace Badenjki\Seller\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Badenjki\Seller\Contracts\Store as StoreContract;
+use Webkul\Core\Eloquent\TranslatableModel;
 
-class Store extends Model
+class Store extends TranslatableModel implements StoreContract
 {
 
-    protected $guarded = [];
+    public $translatedAttributes = ['title'];
+
+    protected $fillable = ['url'];
+
+    protected $with = ['translations'];
 
     public function sellers(){
 
@@ -35,13 +41,13 @@ class Store extends Model
 
     public function path(){
 
-        return '/' . $this->url;
+        return '/' . $this->id;
 
     }
 
-    public function getRouteKeyName()
-    {
-        return 'url';
-    }
+//    public function getRouteKeyName()
+//    {
+////        return 'url';
+//    }
 
 }

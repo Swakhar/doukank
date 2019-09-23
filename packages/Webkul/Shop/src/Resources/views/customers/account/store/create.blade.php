@@ -23,6 +23,8 @@
 
                 <div class="account-table-content">
                     @csrf
+                    <input type="hidden" name="locale" value="all"/>
+
 
                     {!! view_render_event('bagisto.shop.customers.account.store.create_form_controls.before') !!}
 

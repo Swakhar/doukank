@@ -20,7 +20,7 @@ class StoreTest extends TestCase
             'url' => 'some-url',
         ]);
 
-        $this->assertEquals('/some-url', $store->path());
+        $this->assertEquals('/' . $store->id, $store->path());
 
     }
 

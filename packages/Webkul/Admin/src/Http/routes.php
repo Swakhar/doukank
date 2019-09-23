@@ -200,19 +200,20 @@ Route::group(['middleware' => ['web']], function () {
             Route::prefix('marketplace')->group(function () {
 
                 // Sales Order Routes
-                Route::get('/sellers', 'Badenjki\Seller\Http\Controllers\SellerController@index')->defaults('_config', [
-                    'view' => 'admin::marketplace.sellers.index'
-                ])->name('admin.marketplace.sellers.index');
+                Route::get('stores', 'Badenjki\Seller\Http\Controllers\StoreController@index')->defaults('_config', [
+                    'view' => 'admin::marketplace.stores.index'
+                ])->name('admin.marketplace.stores.index');
 
-                Route::get('sellers/edit/{id}', 'Badenjki\Seller\Http\Controllers\SellerController@edit')->defaults('_config',[
-                    'view' => 'admin::marketplace.sellers.edit'
-                ])->name('admin.marketplace.sellers.edit');
+                Route::get('stores/edit/{id}', 'Badenjki\Seller\Http\Controllers\StoreController@edit')->defaults('_config',[
+                    'view' => 'admin::marketplace.stores.edit'
+                ])->name('admin.marketplace.stores.edit');
 
-                Route::put('/sellers/edit/{id}', 'Badenjki\Seller\Http\Controllers\SellerController@update')->defaults('_config', [
-                    'redirect' => 'admin.marketplace.sellers.index'
-                ])->name('admin.catalog.products.update');
+                Route::put('stores/edit/{id}', 'Badenjki\Seller\Http\Controllers\StoreController@update')->defaults('_config', [
+                    'redirect' => 'admin.marketplace.stores.index'
+                ])->name('admin.marketplace.stores.update');
 
-                Route::post('/sellers/delete/{id}', 'Badenjki\Seller\Http\Controllers\SellerController@destroy')->name('admin.marketplace.sellers.delete');
+                Route::post('sellers/delete/{id}', 'Badenjki\Seller\Http\Controllers\SellerController@destroy')
+                    ->name('admin.marketplace.stores.delete');
 
             });
 
