@@ -7,14 +7,10 @@
 @section('content')
     <div class="content">
         <?php $locale = request()->get('locale') ?: app()->getLocale(); ?>
-        <?php $channel = request()->get('channel') ?: core()->getDefaultChannelCode(); ?>
-
-        {!! view_render_event('bagisto.admin.marketplace.store.edit.before', ['store' => $store]) !!}
 
         <form method="POST" action="" @submit.prevent="onSubmit" enctype="multipart/form-data">
 
             <div class="page-header">
-
                 <div class="page-title">
                     <h1>
                         <i class="icon angle-left-icon back-link" onclick="history.length > 1 ? history.go(-1) : window.location = '{{ url('/admin/dashboard') }}';"></i>
@@ -22,23 +18,11 @@
                         {{ __('admin::app.marketplace.stores.edit-title') }}
                     </h1>
 
-{{--                    <div class="control-group">--}}
-{{--                        <select class="control" id="channel-switcher" name="channel">--}}
-{{--                            @foreach (core()->getAllChannels() as $channelModel)--}}
-
-{{--                                <option value="{{ $channelModel->code }}" {{ ($channelModel->code) == $channel ? 'selected' : '' }}>--}}
-{{--                                    {{ $channelModel->name }}--}}
-{{--                                </option>--}}
-
-{{--                            @endforeach--}}
-{{--                        </select>--}}
-{{--                    </div>--}}
-
                     <div class="control-group">
-                        <select class="control" id="locale-switcher" name="locale" onChange="window.location.href = this.value">
+                        <select class="control" id="locale-switcher" onChange="window.location.href = this.value">
                             @foreach (core()->getAllLocales() as $localeModel)
 
-                                <option value="{{ $localeModel->code }}" {{ ($localeModel->code) == $locale ? 'selected' : '' }}>
+                                <option value="{{ route('admin.marketplace.stores.update', $store->id) . '?locale=' . $localeModel->code }}" {{ ($localeModel->code) == $locale ? 'selected' : '' }}>
                                     {{ $localeModel->name }}
                                 </option>
 
@@ -57,27 +41,49 @@
             <div class="page-content">
                 @csrf()
 
-                <accordian title="Category" :active="true">
+                <accordian :title="'{{ __('admin::app.marketplace.stores.general') }}'" :active="true">
 
                     <div slot="body">
 
-                        <div class="control-group text">
-                            <label for="title" class="required">Store Title</label>
-                            <input type="text" name="title" name="{{$locale}}[title]" value="{{ old($locale)['title'] ?: $store->translate($locale)['title'] }}" class="control">
+                        <div class="control-group" :class="[errors.has('{{$locale}}[name]') ? 'has-error' : '']">
+                            <label for="name" class="required">{{ __('admin::app.marketplace.stores.name') }}</label>
+                            <input type="text" v-validate="'required'" class="control" id="name" name="{{$locale}}[name]" value="{{ old($locale)['name'] ?: $store->translate($locale)['name'] }}" data-vv-as="&quot;{{ __('admin::app.marketplace.stores.name') }}&quot;"/>
+                            <span class="control-error" v-if="errors.has('{{$locale}}[name]')">@{{ errors.first('{!!$locale!!}[name]') }}</span>
                         </div>
 
-                        <div class="control-group boolean">
-                            <label for="status" class="required">Status</label>
-                            <select name="status" class="control">
+                        <div class="control-group" :class="[errors.has('tax_number') ? 'has-error' : '']">
+                            <label for="tax_number">{{ __('admin::app.marketplace.stores.tax-number') }}</label>
+                            <input type="text" class="control" id="tax_number" name="tax_number" value="{{$store->tax_number}}"/>
+                            <span class="control-error" v-if="errors.has('tax_number')">@{{ errors.first('tax_number') }}</span>
+                        </div>
 
-                                <option value="0">Inactive</option>
-                                <option value="1">Active</option>
+                        @include ('admin::marketplace.stores.country-state', ['countryCode' => 'SY', 'stateCode' => 'DMSC'])
+
+                        <div class="control-group" :class="[errors.has('{{$locale}}[address]') ? 'has-error' : '']">
+                            <label for="address" class="required">{{ __('admin::app.marketplace.stores.address') }}</label>
+                            <input type="text" v-validate="'required'" class="control" id="address" name="{{$locale}}[address]" value="{{ old($locale)['address'] ?: $store->translate($locale)['address'] }}" data-vv-as="&quot;{{ __('admin::app.marketplace.stores.address') }}&quot;"/>
+                            <span class="control-error" v-if="errors.has('{{$locale}}[address]')">@{{ errors.first('{!!$locale!!}[address]') }}</span>
+                        </div>
+
+                        <div class="control-group" :class="[errors.has('status') ? 'has-error' : '']">
+                            <label for="status" class="required">{{ __('admin::app.marketplace.stores.status') }}</label>
+                            <select class="control" v-validate="'required'" id="status" name="status" data-vv-as="&quot;{{ __('admin::app.marketplace.stores.status') }}&quot;">
+                                <option value="1" {{ $store->status ? 'selected' : '' }}>
+                                    {{ __('admin::app.marketplace.stores.yes') }}
+                                </option>
+                                <option value="0" {{ $store->status ? '' : 'selected' }}>
+                                    {{ __('admin::app.marketplace.stores.no') }}
+                                </option>
                             </select>
+                            <span class="control-error" v-if="errors.has('status')">@{{ errors.first('status') }}</span>
                         </div>
-
                         <div class="control-group"></div>
 
                     </div>
+                </accordian>
+
+                <accordian :title="'{{ __('admin::app.marketplace.stores.social-links') }}'" :active="true">
+
                 </accordian>
 
                 <input name="_method" type="hidden" value="PUT">
@@ -94,12 +100,6 @@
 
     <script>
         $(document).ready(function () {
-            $('#channel-switcher, #locale-switcher').on('change', function (e) {
-                $('#channel-switcher').val()
-                var query = '?channel=' + $('#channel-switcher').val() + '&locale=' + $('#locale-switcher').val();
-
-                window.location.href = "{{ route('admin.marketplace.stores.edit', $store->id)  }}" + query;
-            })
 
             tinymce.init({
                 selector: 'textarea#description, textarea#short_description',
@@ -111,4 +111,5 @@
             });
         });
     </script>
+
 @endpush

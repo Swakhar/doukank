@@ -3,10 +3,10 @@
 namespace Badenjki\Seller\Http\Controllers;
 
 use Badenjki\Seller\Models\Seller;
-use Badenjki\Seller\Models\Store;
+//use Badenjki\Seller\Models\Store;
 use Illuminate\Http\Request;
-use Webkul\Customer\Repositories\CustomerRepository;
-use Badenjki\Seller\Repositories\StoreRepository;
+use Webkul\Customer\Repositories\CustomerRepository as Customer;
+use Badenjki\Seller\Repositories\StoreRepository as Store;
 
 class StoreController extends Controller
 {
@@ -17,8 +17,6 @@ class StoreController extends Controller
 
     protected $customer;
 
-    protected $storeRepository;
-
     /**
      * StoreRepository object
      *
@@ -26,14 +24,14 @@ class StoreController extends Controller
      */
     protected $store;
 
-    public function __construct(CustomerRepository $customer)
+    public function __construct(Customer $customer, Store $store)
     {
 
         $this->customer = $customer;
 
         $this->_config = request('_config');
 
-        $this->storeRepository = new StoreRepository(app());
+        $this->store = $store;
 
     }
 
@@ -111,16 +109,9 @@ class StoreController extends Controller
     public function edit($id)
     {
 
-        $store = $this->storeRepository->findOrFail($id);
+        $store = $this->store->findOrFail($id);
 
         return view($this->_config['view'], compact('store'));
-
-//        $this->locale = request()->get('locale') ?: app()->getLocale();
-//
-//        $store = Store::where('id', $id)->
-//            where('locale', $this->locale)->firstOrFail();
-//
-//        return view($this->_config['view'], compact('store'));
 
     }
 
@@ -134,12 +125,9 @@ class StoreController extends Controller
     public function update(Request $request, $id)
     {
 
-        $store = Store::findOrFail($id);
+        $locale = request()->get('locale') ?: app()->getLocale();
 
-        // TODO: add some authorization and policy here
-        $store->update([
-            'title' => $request->title
-        ]);
+        $this->store->update(request()->all(), $id);
 
         return redirect()->route($this->_config['redirect']);
 

@@ -414,6 +414,16 @@ return [
             'title' => 'Stores',
             'edit-title' => 'Edit Store',
             'save-btn-title' => 'Save',
+            'general' => 'General',
+            'name' => 'Store Name',
+            'tax-number' => 'Tax Number',
+            'address' => 'Address',
+            'state' => 'City',
+            'status' => 'Status',
+            'yes' => 'Active',
+            'no' => 'Inactive',
+            'select-state' => 'Choose a city',
+            'social-links' => 'Social Links'
         ],
         'invoices' => [
             'title' => 'Invoices',

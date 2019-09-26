@@ -19,6 +19,7 @@ return [
         'invoices' => 'الفواتير',
         'marketplace' => 'المتاجر',
         'sellers' => 'البائعون',
+        'stores' => 'المتاجر',
         'catalog' => 'فهرس',
         'products' => 'المنتجات',
         'categories' => 'الفئات',
@@ -385,6 +386,21 @@ return [
             'total-refunded' => 'مجموع المبالغ المستردة',
             'total-due' => 'المجموع المستحق',
             'cancel-confirm-msg' => 'هل أنت متأكد من أنك تريد إلغاء هذا الطلب ؟'
+        ],
+        'stores' => [
+            'title' => 'المتاجر',
+            'edit-title' => 'تعديل المتجر',
+            'save-btn-title' => 'حفظ التغييرات',
+            'general' => 'معلومات عامة',
+            'name' => 'اسم المتجر',
+            'tax-number' => 'الرقم الضريبي',
+            'state' => 'المدينة',
+            'address' => 'العنوان',
+            'status' => 'حالة المتجر',
+            'yes' => 'فعّال',
+            'no' => 'غير فعّال',
+            'social-links' => 'روابط السوشال ميديا',
+            'select-state' => 'يرجى اختيار مدينة'
         ],
         'invoices' => [
             'title' => 'الفواتير',

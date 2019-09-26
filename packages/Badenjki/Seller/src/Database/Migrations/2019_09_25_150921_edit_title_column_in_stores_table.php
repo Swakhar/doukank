@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStoreTranslationsTable extends Migration
+class EditTitleColumnInStoresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class CreateStoreTranslationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('store_translations', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+        Schema::table('store_translations', function (Blueprint $table) {
+            $table->renameColumn('title', 'name');
         });
     }
 
@@ -26,6 +25,8 @@ class CreateStoreTranslationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('store_translations');
+        Schema::table('stores', function (Blueprint $table) {
+            //
+        });
     }
 }

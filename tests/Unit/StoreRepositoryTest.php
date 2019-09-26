@@ -34,5 +34,26 @@ class StoreRepositoryTest extends TestCase
 
     }
 
+    /** @test */
+    function it_can_update_a_store(){
+
+        $this->seed();
+
+        $this->store = new Store($this->app);
+
+        $this->store->create($data = [
+            'url' => 'something',
+            'locale' => 'all'
+        ]);
+
+        $this->assertDatabaseHas('stores', ['url' => 'something']);
+
+        $this->store->update([
+            'status' => '1'
+        ], 1);
+
+        $this->assertDatabaseHas('stores', ['status' => '1']);
+    }
+
 
 }
