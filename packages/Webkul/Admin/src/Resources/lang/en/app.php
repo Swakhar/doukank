@@ -164,7 +164,9 @@ return [
         'per-cust' => 'Per Customer',
         'usage-throttle' => 'Usage Times',
         'for-guest' => 'For Guest',
-        'store' => 'Store',
+        'store-name' => 'Store Name',
+        'store-owner' => 'Store Owner'
+
     ],
 
     'account' => [

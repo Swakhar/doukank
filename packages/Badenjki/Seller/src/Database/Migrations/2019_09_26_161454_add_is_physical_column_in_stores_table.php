@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class EditTitleColumnInStoresTable extends Migration
+class AddIsPhysicalColumnInStoresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class EditTitleColumnInStoresTable extends Migration
      */
     public function up()
     {
-        Schema::table('store_translations', function (Blueprint $table) {
-            $table->renameColumn('title', 'name');
+        Schema::table('stores', function (Blueprint $table) {
+            $table->boolean('is_physical')->nullable()->after('featured');
         });
     }
 

@@ -7,6 +7,7 @@ use Badenjki\Seller\Models\Seller;
 use Illuminate\Http\Request;
 use Webkul\Customer\Repositories\CustomerRepository as Customer;
 use Badenjki\Seller\Repositories\StoreRepository as Store;
+use Badenjki\Seller\Repositories\StoreCategoryRepository as Category;
 
 class StoreController extends Controller
 {
@@ -17,6 +18,8 @@ class StoreController extends Controller
 
     protected $customer;
 
+    protected $category;
+
     /**
      * StoreRepository object
      *
@@ -24,10 +27,12 @@ class StoreController extends Controller
      */
     protected $store;
 
-    public function __construct(Customer $customer, Store $store)
+    public function __construct(Customer $customer, Store $store, Category $category)
     {
 
         $this->customer = $customer;
+
+        $this->category = $category;
 
         $this->_config = request('_config');
 
@@ -62,9 +67,11 @@ class StoreController extends Controller
     public function create()
     {
 
+        $categories = $this->category->all();
+
         $customer = $this->customer->find(auth()->guard('customer')->user()->id);
 
-        return view($this->_config['view'], compact('customer'));
+        return view($this->_config['view'], compact(['customer', 'categories']));
 
     }
 
@@ -79,7 +86,7 @@ class StoreController extends Controller
 
         $customer = auth()->guard('customer')->user();
 
-        $store = $this->storeRepository->create(request()->all());
+        $store = $this->store->create(request()->all());
 
         $customer->update([
             'store_id' => $store->id
@@ -111,7 +118,9 @@ class StoreController extends Controller
 
         $store = $this->store->findOrFail($id);
 
-        return view($this->_config['view'], compact('store'));
+        $categories = $this->category->all();
+
+        return view($this->_config['view'], compact(['store', 'categories']));
 
     }
 

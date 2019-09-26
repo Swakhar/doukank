@@ -320,5 +320,19 @@
       "code":"MP",
       "default_name":"Northern Mariana Islands",
       "country_id":244
+   },
+   {  
+      "id":47,
+      "country_code":"SY",
+      "code":"ALP",
+      "default_name":"Aleppo",
+      "country_id":221
+   },
+   {  
+      "id":48,
+      "country_code":"SY",
+      "code":"DMS",
+      "default_name":"Damascus",
+      "country_id":221
    }
 ]

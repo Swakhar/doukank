@@ -51,13 +51,25 @@
                             <span class="control-error" v-if="errors.has('{{$locale}}[name]')">@{{ errors.first('{!!$locale!!}[name]') }}</span>
                         </div>
 
+                        <div class="control-group" :class="[errors.has('category') ? 'has-error' : '']">
+                            <label for="category_id" class="required">
+                                {{ __('admin::app.marketplace.stores.category') }}
+                            </label>
+                            <select class="control" id="category_id" name="category_id">
+                                <option value="">{{ __('admin::app.marketplace.stores.select-category') }}</option>
+                                @foreach($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->translate($locale)['name']}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         <div class="control-group" :class="[errors.has('tax_number') ? 'has-error' : '']">
                             <label for="tax_number">{{ __('admin::app.marketplace.stores.tax-number') }}</label>
                             <input type="text" class="control" id="tax_number" name="tax_number" value="{{$store->tax_number}}"/>
                             <span class="control-error" v-if="errors.has('tax_number')">@{{ errors.first('tax_number') }}</span>
                         </div>
 
-                        @include ('admin::marketplace.stores.country-state', ['countryCode' => 'SY', 'stateCode' => 'DMSC'])
+                        @include ('admin::marketplace.stores.country-state', ['countryCode' => 'SY'])
 
                         <div class="control-group" :class="[errors.has('{{$locale}}[address]') ? 'has-error' : '']">
                             <label for="address" class="required">{{ __('admin::app.marketplace.stores.address') }}</label>

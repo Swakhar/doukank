@@ -5,7 +5,7 @@
 @endsection
 
 @section('content-wrapper')
-
+    <?php $locale = request()->get('locale') ?: app()->getLocale(); ?>
     <div class="account-content">
 
         @include('shop::customers.account.partials.sidemenu')
@@ -28,22 +28,16 @@
 
                     {!! view_render_event('bagisto.shop.customers.account.store.create_form_controls.before') !!}
 
-                    <div class="control-group" :class="[errors.has('title') ? 'has-error' : '']">
-                        <label for="title" class="required">{{ __('shop::app.customer.account.store.create.store-title') }}</label>
-                        <input type="text" class="control" name="title" id="title" v-validate="'required'" data-vv-as="&quot;{{ __('shop::app.customer.account.store.create.title') }}&quot;">
-                        <span class="control-error" v-if="errors.has('title')">@{{ errors.first('title') }}</span>
+                    <div class="control-group" :class="[errors.has('name') ? 'has-error' : '']">
+                        <label for="name" class="required">{{ __('shop::app.customer.account.store.create.store-title') }}</label>
+                        <input type="text" class="control" name="{{$locale}}[name]" id="name" v-validate="'required'" data-vv-as="&quot;{{ __('shop::app.customer.account.store.create.title') }}&quot;">
+                        <span class="control-error" v-if="errors.has('name')">@{{ errors.first('name') }}</span>
                     </div>
 
-                    <div class="control-group" :class="[errors.has('url') ? 'has-error' : '']">
-                        <label for="url" class="required">{{ __('shop::app.customer.account.store.create.url') }}</label>
-                        <input type="text" class="control" name="url" id="url" v-validate="'required'" data-vv-as="&quot;{{ __('shop::app.customer.account.store.create.url') }}&quot;">
-                        <span class="control-error" v-if="errors.has('url')">@{{ errors.first('url') }}</span>
-                    </div>
-
-{{--                    <div class="control-group" :class="[errors.has('address1[]') ? 'has-error' : '']">--}}
-{{--                        <label for="address_0" class="required">{{ __('shop::app.customer.account.store.create.street-address') }}</label>--}}
-{{--                        <input type="text" class="control" name="address1[]" id="address_0" v-validate="'required'" data-vv-as="&quot;{{ __('shop::app.customer.account.address.create.street-address') }}&quot;">--}}
-{{--                        <span class="control-error" v-if="errors.has('address1[]')">@{{ errors.first('address1[]') }}</span>--}}
+{{--                    <div class="control-group" :class="[errors.has('url') ? 'has-error' : '']">--}}
+{{--                        <label for="url" class="required">{{ __('shop::app.customer.account.store.create.url') }}</label>--}}
+{{--                        <input type="text" class="control" name="url" id="url" v-validate="'required'" data-vv-as="&quot;{{ __('shop::app.customer.account.store.create.url') }}&quot;">--}}
+{{--                        <span class="control-error" v-if="errors.has('url')">@{{ errors.first('url') }}</span>--}}
 {{--                    </div>--}}
 
                     @if (core()->getConfigData('customer.settings.address.street_lines') && core()->getConfigData('customer.settings.address.street_lines') > 1)
@@ -54,7 +48,7 @@
                         </div>
                     @endif
 
-{{--                    @include ('shop::customers.account.address.country-state', ['countryCode' => old('country'), 'stateCode' => old('state')])--}}
+                    @include ('admin::marketplace.stores.country-state', ['countryCode' => 'SY'])
 
 {{--                    <div class="control-group" :class="[errors.has('city') ? 'has-error' : '']">--}}
 {{--                        <label for="city" class="required">{{ __('shop::app.customer.account.store.create.city') }}</label>--}}

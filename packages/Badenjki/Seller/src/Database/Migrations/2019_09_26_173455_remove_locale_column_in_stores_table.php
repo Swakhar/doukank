@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddTypeColumnInCategoriesTable extends Migration
+class RemoveLocaleColumnInStoresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddTypeColumnInCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::table('categories', function (Blueprint $table) {
-            $table->string('type')->default('product')->nullable()->after('status');
+        Schema::table('stores', function (Blueprint $table) {
+            $table->dropColumn('locale');
         });
     }
 
@@ -25,8 +25,8 @@ class AddTypeColumnInCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::table('categories', function (Blueprint $table) {
-            $table->dropColumn('type');
+        Schema::table('stores', function (Blueprint $table) {
+            //
         });
     }
 }

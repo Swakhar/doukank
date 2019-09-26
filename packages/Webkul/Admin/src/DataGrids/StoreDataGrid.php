@@ -23,7 +23,8 @@ class StoreDataGrid extends DataGrid
     {
         $queryBuilder = DB::table('customers')
             ->leftJoin('stores', 'customers.store_id', '=', 'stores.id')
-            ->select('customers.id as seller_id', 'stores.id as store_id', 'stores.title as store_name', 'stores.status as status', 'stores.url as store_url')
+            ->leftJoin('store_translations', 'stores.id', '=', 'store_translations.store_id')
+            ->select('customers.id as seller_id', 'stores.id as store_id', 'store_translations.name as store_name', 'stores.status as status', 'stores.url as store_url')
             ->addSelect(DB::raw('CONCAT(customers.first_name, " ", customers.last_name) as full_name'))
             ->whereNotNull('customers.store_id');
 
@@ -38,7 +39,7 @@ class StoreDataGrid extends DataGrid
 
         $this->addFilter('seller_id', 'customers.id');
         $this->addFilter('full_name', DB::raw('CONCAT(customers.first_name, " ", customers.last_name)'));
-        $this->addFilter('store_name', 'stores.title');
+        $this->addFilter('store_name', 'store_translations.name');
         $this->addFilter('status', 'stores.status');
         $this->addFilter('store_url', 'stores.url');
 
@@ -58,7 +59,7 @@ class StoreDataGrid extends DataGrid
 
         $this->addColumn([
             'index' => 'store_name',
-            'label' => trans('admin::app.datagrid.store'),
+            'label' => trans('admin::app.datagrid.store-name'),
             'type' => 'string',
             'searchable' => true,
             'sortable' => true,
@@ -67,7 +68,7 @@ class StoreDataGrid extends DataGrid
 
         $this->addColumn([
             'index' => 'full_name',
-            'label' => trans('admin::app.datagrid.name'),
+            'label' => trans('admin::app.datagrid.store-owner'),
             'type' => 'string',
             'searchable' => true,
             'sortable' => true,
@@ -110,25 +111,25 @@ class StoreDataGrid extends DataGrid
         $this->enableAction = true;
     }
 
-    public function prepareMassActions() {
-        $this->addMassAction([
-            'type' => 'delete',
-            'label' => 'Delete',
-            'action' => route('admin.catalog.products.massdelete'),
-            'method' => 'DELETE'
-        ]);
-
-        $this->addMassAction([
-            'type' => 'update',
-            'label' => 'Update Status',
-            'action' => route('admin.catalog.products.massupdate'),
-            'method' => 'PUT',
-            'options' => [
-                'Active' => 1,
-                'Inactive' => 0
-            ]
-        ]);
-
-        $this->enableMassAction = true;
-    }
+//    public function prepareMassActions() {
+//        $this->addMassAction([
+//            'type' => 'delete',
+//            'label' => 'Delete',
+//            'action' => route('admin.catalog.products.massdelete'),
+//            'method' => 'DELETE'
+//        ]);
+//
+//        $this->addMassAction([
+//            'type' => 'update',
+//            'label' => 'Update Status',
+//            'action' => route('admin.catalog.products.massupdate'),
+//            'method' => 'PUT',
+//            'options' => [
+//                'Active' => 1,
+//                'Inactive' => 0
+//            ]
+//        ]);
+//
+//        $this->enableMassAction = true;
+//    }
 }

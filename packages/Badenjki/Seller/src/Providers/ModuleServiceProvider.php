@@ -9,5 +9,6 @@ class ModuleServiceProvider extends BaseModuleServiceProvider
     protected $models = [
         \Badenjki\Seller\Models\Seller::class,
         \Badenjki\Seller\Models\Store::class,
+        \Badenjki\Seller\Models\StoreCategory::class,
     ];
 }

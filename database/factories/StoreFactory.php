@@ -9,8 +9,6 @@ use Badenjki\Seller\Models\Store as Store;
 $factory->define(Store::class, function (Faker $faker) {
     return [
         'url' => $faker->unique()->word,
-        'title' => $faker->company,
         'category_id' => 1,
-        'type' => 'furniture',
     ];
 });

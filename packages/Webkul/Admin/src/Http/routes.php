@@ -215,6 +215,17 @@ Route::group(['middleware' => ['web']], function () {
                 Route::post('sellers/delete/{id}', 'Badenjki\Seller\Http\Controllers\SellerController@destroy')
                     ->name('admin.marketplace.stores.delete');
 
+                Route::get('categories', 'Badenjki\Seller\Http\Controllers\StoreCategoryController@index')->defaults('_config', [
+                    'view' => 'admin::marketplace.categories.index'
+                ])->name('admin.marketplace.categories.index');
+
+                Route::get('categories/edit/{id}', 'Badenjki\Seller\Http\Controllers\StoreCategoryController@edit')->defaults('_config', [
+                    'view' => 'admin::marketplace.categories.edit'
+                ])->name('admin.marketplace.categories.edit');
+
+                Route::post('categories/delete/{id}', 'Badenjki\Seller\Http\Controllers\StoreCategoryController@destroy')
+                    ->name('admin.marketplace.categories.delete');
+
             });
 
 

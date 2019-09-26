@@ -22,7 +22,7 @@ class CurrencyTableSeeder extends Seeder
         DB::table('currencies')->insert([
             'id' => 2,
             'code' => 'SYP',
-            'name' => 'لزس'
+            'name' => 'ل.س'
         ]);
     }
 }
