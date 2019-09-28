@@ -18,6 +18,11 @@
                         {{ __('admin::app.export.export') }}
                     </span>
                 </div>
+
+                <a href="{{ route('admin.marketplace.stores.create') }}" class="btn btn-lg btn-primary">
+                    {{ __('admin::app.marketplace.stores.add-store-btn-title') }}
+                </a>
+
             </div>
         </div>
 

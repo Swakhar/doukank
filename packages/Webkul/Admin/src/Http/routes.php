@@ -204,6 +204,14 @@ Route::group(['middleware' => ['web']], function () {
                     'view' => 'admin::marketplace.stores.index'
                 ])->name('admin.marketplace.stores.index');
 
+                Route::get('/stores/create', 'Badenjki\Seller\Http\Controllers\StoreController@create')->defaults('_config', [
+                    'view' => 'admin::marketplace.stores.create'
+                ])->name('admin.marketplace.stores.create');
+
+//                Route::get('stores/view/{id}', 'Badenjki\Seller\Http\Controllers\StoreController@view')->defaults('_config', [
+//                    'view' => 'admin::sales.orders.view'
+//                ])->name('admin.sales.orders.view');
+
                 Route::get('stores/edit/{id}', 'Badenjki\Seller\Http\Controllers\StoreController@edit')->defaults('_config',[
                     'view' => 'admin::marketplace.stores.edit'
                 ])->name('admin.marketplace.stores.edit');
@@ -218,6 +226,10 @@ Route::group(['middleware' => ['web']], function () {
                 Route::get('categories', 'Badenjki\Seller\Http\Controllers\StoreCategoryController@index')->defaults('_config', [
                     'view' => 'admin::marketplace.categories.index'
                 ])->name('admin.marketplace.categories.index');
+
+                Route::get('categories/create', 'Badenjki\Seller\Http\Controllers\StoreCategoryController@create')->defaults('_config', [
+                    'view' => 'admin::marketplace.categories.create'
+                ])->name('admin.marketplace.categories.create');
 
                 Route::get('categories/edit/{id}', 'Badenjki\Seller\Http\Controllers\StoreCategoryController@edit')->defaults('_config', [
                     'view' => 'admin::marketplace.categories.edit'

@@ -11,7 +11,7 @@ class Store extends TranslatableModel implements StoreContract
 
     public $translatedAttributes = ['name', 'address', 'description', 'return_policy', 'shipping_policy', 'meta_title', 'meta_description', 'meta_keywords'];
 
-    protected $fillable = ['url', 'status', 'featured', 'state_id', 'is_physical', 'category_id', 'phone', 'geolocation', 'is_visible'];
+    protected $fillable = ['url', 'tax_number', 'status', 'featured', 'state_id', 'is_physical', 'category_id', 'phone', 'geolocation', 'is_visible'];
 
     protected $with = ['translations'];
 

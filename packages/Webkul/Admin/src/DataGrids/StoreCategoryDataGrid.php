@@ -23,7 +23,8 @@ class StoreCategoryDataGrid extends DataGrid
     {
         $queryBuilder = DB::table('store_categories')
             ->leftJoin('store_category_translations', 'store_category_translations.store_category_id', '=', 'store_categories.id')
-            ->select('store_categories.id as id', 'store_category_translations.name as name', 'store_categories.code as code');
+            ->select('store_categories.id as id', 'store_category_translations.name as name', 'store_categories.code as code')
+            ->where('locale', app()->getLocale());
 
         $this->setQueryBuilder($queryBuilder);
     }
@@ -41,7 +42,7 @@ class StoreCategoryDataGrid extends DataGrid
 
         $this->addColumn([
             'index' => 'name',
-            'label' => trans('admin::app.datagrid.category'),
+            'label' => trans('admin::app.datagrid.category-name'),
             'type' => 'string',
             'searchable' => true,
             'sortable' => true,

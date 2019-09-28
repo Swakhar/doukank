@@ -14,7 +14,7 @@ class AddForeignConstrainInStoresTable extends Migration
     public function up()
     {
         Schema::table('stores', function (Blueprint $table) {
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('store_categories')->onDelete('set null');
         });
     }
 

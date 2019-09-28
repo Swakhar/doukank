@@ -19,6 +19,10 @@ class CreateStoresTable extends Migration
             $table->string('title')->nullable();
             $table->boolean('is_active')->default(0);
             $table->boolean('is_visible')->default(0);
+            $table->string('facebook')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('telegram')->nullable();
             $table->timestamps();
         });
     }

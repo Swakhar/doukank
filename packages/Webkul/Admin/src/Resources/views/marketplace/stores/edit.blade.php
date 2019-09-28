@@ -58,7 +58,7 @@
                             <select class="control" id="category_id" name="category_id">
                                 <option value="">{{ __('admin::app.marketplace.stores.select-category') }}</option>
                                 @foreach($categories as $category)
-                                    <option value="{{$category->id}}">{{$category->translate($locale)['name']}}</option>
+                                    <option value="{{$category->id}}" {{$store->category_id == $category->id ? 'selected' : ''}} v-validate="'required'" >{{$category->translate($locale)['name']}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -72,8 +72,8 @@
                         @include ('admin::marketplace.stores.country-state', ['countryCode' => 'SY'])
 
                         <div class="control-group" :class="[errors.has('{{$locale}}[address]') ? 'has-error' : '']">
-                            <label for="address" class="required">{{ __('admin::app.marketplace.stores.address') }}</label>
-                            <input type="text" v-validate="'required'" class="control" id="address" name="{{$locale}}[address]" value="{{ old($locale)['address'] ?: $store->translate($locale)['address'] }}" data-vv-as="&quot;{{ __('admin::app.marketplace.stores.address') }}&quot;"/>
+                            <label for="address">{{ __('admin::app.marketplace.stores.address') }}</label>
+                            <input type="text" class="control" id="address" name="{{$locale}}[address]" value="{{ old($locale)['address'] ?: $store->translate($locale)['address'] }}" data-vv-as="&quot;{{ __('admin::app.marketplace.stores.address') }}&quot;"/>
                             <span class="control-error" v-if="errors.has('{{$locale}}[address]')">@{{ errors.first('{!!$locale!!}[address]') }}</span>
                         </div>
 

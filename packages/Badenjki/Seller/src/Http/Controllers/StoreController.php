@@ -69,7 +69,9 @@ class StoreController extends Controller
 
         $categories = $this->category->all();
 
-        $customer = $this->customer->find(auth()->guard('customer')->user()->id);
+        if(auth()->guard('customer')->user()){
+            $customer = $this->customer->find(auth()->guard('customer')->user()->id);
+        }
 
         return view($this->_config['view'], compact(['customer', 'categories']));
 

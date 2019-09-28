@@ -5,7 +5,7 @@
     <select class="control" id="state_id" name="state_id">
         <option value="">{{ __('admin::app.marketplace.stores.select-state') }}</option>
         @foreach(core()->states($countryCode) as $state)
-            <option value="{{$state->id}}">{{$state->translate($locale)['name']}}</option>
+            <option value="{{$state->id}}" {{$store->state_id == $state->id ? 'selected' : ''}}>{{$state->translate($locale)['name']}}</option>
         @endforeach
     </select>
     <span class="control-error" v-if="errors.has('state')">

@@ -26,7 +26,8 @@ class StoreDataGrid extends DataGrid
             ->leftJoin('store_translations', 'stores.id', '=', 'store_translations.store_id')
             ->select('customers.id as seller_id', 'stores.id as store_id', 'store_translations.name as store_name', 'stores.status as status', 'stores.url as store_url')
             ->addSelect(DB::raw('CONCAT(customers.first_name, " ", customers.last_name) as full_name'))
-            ->whereNotNull('customers.store_id');
+            ->whereNotNull('customers.store_id')
+            ->where('locale', app()->getLocale());
 
 //        $queryBuilder = DB::table('product_flat')
 //            ->leftJoin('products', 'product_flat.product_id', '=', 'products.id')

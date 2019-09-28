@@ -63,16 +63,24 @@ class ShopServiceProvider extends ServiceProvider
      */
     protected function composeView()
     {
-        view()->composer('shop::customers.account.partials.sidemenu', function ($view) {
-            $tree = Tree::create();
+        view()->composer('shop::customers.account.partials.customersidemenu', function ($view) {
+            $customerTree = Tree::create();
 
             foreach (config('menu.customer') as $item) {
-                $tree->add($item, 'menu');
+                $customerTree->add($item, 'menu');
             }
+            $customerTree->items = core()->sortItems($customerTree->items);
+            $view->with('menu', $customerTree);
+        });
 
-            $tree->items = core()->sortItems($tree->items);
+        view()->composer('shop::customers.account.partials.sellersidemenu', function ($view) {
+            $customerTree = Tree::create();
 
-            $view->with('menu', $tree);
+            foreach (config('menu.seller') as $item) {
+                $customerTree->add($item, 'menu');
+            }
+            $customerTree->items = core()->sortItems($customerTree->items);
+            $view->with('menu', $customerTree);
         });
 
     }

@@ -21,6 +21,7 @@ return [
         'marketplace' => 'Marketplace',
         'sellers' => 'Sellers',
         'stores' => 'Stores',
+        'store-categories' => 'Categories',
         'catalog' => 'Catalog',
         'products' => 'Products',
         'categories' => 'Categories',
@@ -165,7 +166,8 @@ return [
         'usage-throttle' => 'Usage Times',
         'for-guest' => 'For Guest',
         'store-name' => 'Store Name',
-        'store-owner' => 'Store Owner'
+        'store-owner' => 'Store Owner',
+        'category-name' => 'Name'
 
     ],
 
@@ -415,7 +417,7 @@ return [
         'stores' => [
             'title' => 'Stores',
             'edit-title' => 'Edit Store',
-            'save-btn-title' => 'Save',
+            'save-btn-title' => 'Save Store',
             'general' => 'General',
             'name' => 'Store Name',
             'tax-number' => 'Tax Number',
@@ -425,7 +427,14 @@ return [
             'yes' => 'Active',
             'no' => 'Inactive',
             'select-state' => 'Choose a city',
-            'social-links' => 'Social Links'
+            'social-links' => 'Social Links',
+            'add-store-btn-title' => 'Create Store',
+            'category' => 'Store Category',
+            'select-category' => 'Select a Category'
+        ],
+        'categories' => [
+            'title' => 'Categories',
+            'add-category-btn-title' => 'Create Category'
         ],
         'invoices' => [
             'title' => 'Invoices',
@@ -1086,7 +1095,7 @@ return [
     ],
 
     'footer' => [
-        'copy-right' => '© Copyright 2019 Doukank, All rights reserved.'
+        'copy-right' => '© Copyright 2019 Doukank. All rights reserved.'
     ],
 
     'admin' => [
