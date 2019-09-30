@@ -3,11 +3,11 @@
 return [
     'layouts' => [
         'my-account' => 'حسابي',
-        'profile' => 'التوصيف',
+        'profile' => 'الملف الشخصي',
         'address' => 'العنوان',
-        'reviews' => 'باء-الاستعراضات',
+        'reviews' => 'المراجعات',
         'wishlist' => 'قائمة الأماني',
-        'orders' => 'الأوامر',
+        'orders' => 'الطلبات',
     ],
 
     'common' => [
@@ -15,10 +15,10 @@ return [
     ],
 
     'home' => [
-        'page-title' => 'الحقائب إلى البيت',
-        'featured-products' => 'المنتجات البارزة',
+        'page-title' => 'دكانك - الرئيسية',
+        'featured-products' => 'المنتجات المميزة',
         'new-products' => 'المنتجات الجديدة',
-        'verify-email' => 'تحقق من حساب بريدك الإلكتروني',
+        'verify-email' => 'تأكيد البريد الالكتروني',
         'resend-verify-email' => 'إعادة إرسال البريد الإلكتروني للتحقق'
     ],
 
@@ -28,10 +28,10 @@ return [
         'sign-in' => 'تسجيل الدخول',
         'sign-up' => 'الاشتراك',
         'account' => 'الحساب',
-        'cart' => 'عربة',
+        'cart' => 'عربة التسوق',
         'profile' => 'التوصيف',
         'wishlist' => 'قائمة الأماني',
-        'cart' => 'عربة',
+        'cart' => 'عربة التسوق',
         'logout' => 'خروج',
         'search-text' => 'ابحث عن المنتجات هنا'
     ],
@@ -44,43 +44,43 @@ return [
     ],
 
     'footer' => [
-        'subscribe-newsletter' => 'اشترك في الرسالة الإخبارية',
+        'subscribe-newsletter' => 'اشترك في القائمة البريدية',
         'subscribe' => 'اشترك',
-        'locale' => 'locale',
+        'locale' => 'اللغة',
         'currency' => 'العملة',
     ],
 
     'subscription' => [
         'unsubscribe' => 'الإلغاء',
         'subscribe' => 'اشترك',
-        'subscribed' => 'أنت مشترك الآن إلى الإشتراك بريد إلكتروني',
-        'not-subscribed' => 'لا يمكنك الاشتراك في البريد الإلكتروني ، حاول مرة أخرى بعد بعض الوقت',
+        'subscribed' => 'أنت مشترك الآن',
+        'not-subscribed' => 'لا يمكنك الاشتراك في البريد الإلكتروني ، حاول مرة أخرى بعد قليل',
         'already' => 'أنت مشترك بالفعل في قائمة اشتراكاتنا',
         'unsubscribed' => 'أنت غير مرتبط من بريد باجيستو الإشتراك',
-        'already-unsub' => 'أنت بالفعل غير مرتبط',
-        'not-subscribed' => 'خطأ! البريد لا يمكن إرساله حاليا ، الرجاء المحاولة لاحقا'
+        'already-unsub' => 'أنت بالفعل غير مشترك',
+        'not-subscribed' => 'خطأ! لا يمكن إرسال البريد حاليا ، الرجاء المحاولة لاحقا'
     ],
 
     'search' => [
         'no-results' => 'لا توجد نتائج',
-        'page-title' => 'Bagisto - Search',
+        'page-title' => 'دكانك - نتائج البحث',
         'found-results' => 'تم العثور على نتائج البحث',
         'found-result' => 'تم العثور على نتيجة البحث'
     ],
 
     'reviews' => [
         'title' => 'العنوان',
-        'add-review-page-title' => 'إضافة استعراض',
+        'add-review-page-title' => 'إضافة مراجعة',
         'write-review' => 'اكتب مراجعة',
-        'review-title' => 'أعطي مراجعتك عنوان',
-        'product-review-page-title' => 'استعراض المنتجات',
+        'review-title' => 'عنوان المراجعة',
+        'product-review-page-title' => 'مراحعة المنتج',
         'rating-reviews' => 'التقييم والمراجعات',
-        'submit' => 'قدم',
-        'delete-all' => 'كل الاستعراضات حذفت بنجاح',
-        'ratingreviews' => ':rating التقديرات & :review باء-الاستعراضات',
+        'submit' => 'حفظ',
+        'delete-all' => 'تم حذف جميع المراجعات بنجاح',
+        'ratingreviews' => ':rating تقديرات و :review مرجعات',
         'star' => 'نجم',
         'percentage' => ':percentage %',
-        'id-star' => 'نجم'
+        'id-star' => 'نجمة'
     ],
 
     'customer' => [
@@ -103,7 +103,7 @@ return [
             'conditions' => 'الشروط',
             'using' => 'باستخدام هذا الموقع',
             'agreement' => 'اتفاق',
-            'success' => 'الحساب أنشئ بنجاح, تم إرسال بريد إلكتروني إلى حسابك للتحقق',
+            'success' => 'تم انشاء الحساب بنجاح, تم إرسال بريد إلكتروني إلى حسابك للتحقق',
             'success-verify-email-not-sent' => 'الحساب أنشئ بنجاح, لكن البريد الإلكتروني لم يتم إرساله',
             'failed' => 'خطأ! لا يمكن إنشاء حسابك ، حاول مرة أخرى لاحقا',
             'already-verified' => 'حسابك تم التحقق منه بالفعل أو الرجاء محاولة إرسال بريد إلكتروني جديد للتحقق مرة أخرى',
@@ -120,44 +120,44 @@ return [
         ],
 
         'login-form' => [
-            'page-title' => 'دخول العملاء',
+            'page-title' => 'تاسجيل دخول العملاء',
             'title' => 'تسجيل الدخول',
             'email' => 'البريد الإلكتروني',
             'password' => 'كلمة السر',
             'forgot_pass' => 'نسيت كلمة السر؟',
             'button_title' => 'تسجيل الدخول',
             'remember' => 'تذكريني',
-            'footer' => '© Copyright 2018 Webkul Software, جميع الحقوق محفوظة',
-            'invalid-creds' => 'الرجاء التحقق من أوراق اعتمادك ومحاولة مرة أخرى',
+            'footer' => 'جميع الحقوق محفوظة. شركة دكانك 2019',
+            'invalid-creds' => 'الرجاء التحقق من اسم المستخدم وكلمة المرور والمحاولة مرة أخرى',
             'verify-first' => 'تحقق من حساب بريدك الإلكتروني أولا',
             'resend-verification' => 'إعادة إرسال البريد الإلكتروني للتحقق مرة أخرى'
         ],
 
         'forgot-password' => [
-            'title' => 'استرجع كلمة السر',
+            'title' => 'نسيت كلمة السر',
             'email' => 'البريد الإلكتروني',
-            'submit' => 'قدم',
-            'page_title' => 'العميل-نسى استمارة كلمة السر'
+            'submit' => 'إرسال',
+            'page_title' => 'العميل - كلمة سر مفقودة'
         ],
 
         'reset-password' => [
-            'title' => 'أعد ضبط كلمة السر',
+            'title' => 'اختر كلمة سر جديدة',
             'email' => 'البريد الإلكتروني المسجل',
             'password' => 'كلمة السر',
             'confirm-password' => 'تأكيد كلمة السر',
-            'back-link-title' => 'العودة للتوقيع',
+            'back-link-title' => 'العودة لتسجيل الدخول',
             'submit-btn-title' => 'أعد ضبط كلمة السر'
         ],
 
         'account' => [
-            'dashboard' => 'الزبون تحرير التوصيف',
+            'dashboard' => 'الصفحة الرئيسية',
             'menu' => 'القائمة',
 
             'profile' => [
                 'index' => [
                     'page-title' => 'ملف الزبون',
                     'title' => 'التوصيف',
-                    'edit' => 'حرر',
+                    'edit' => 'تعديل',
                 ],
 
                 'edit-success' => 'جاري تحديث الملف بنجاح',
