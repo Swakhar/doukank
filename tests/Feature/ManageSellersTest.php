@@ -28,6 +28,7 @@ class ManageSellersTest extends TestCase
         // login as an admin
         $this->signIn('admin');
 
+        // admin can see sellers
         $this->get('admin/marketplace/stores')->assertSee($seller->store->name);
 
     }
@@ -37,8 +38,10 @@ class ManageSellersTest extends TestCase
 
         $this->seed();
 
+        // create a new store
         $store = factory(Store::class)->create();
 
+        // sign in as an admin
         $this->signIn('admin');
 
         $path = '/admin/marketplace/stores/edit/' . $store->id;
@@ -49,6 +52,7 @@ class ManageSellersTest extends TestCase
 
         $store->refresh();
 
+        // having changed the title, you can see the change.
         $this->assertEquals('different-one', $store->title);
 
     }
@@ -63,22 +67,16 @@ class ManageSellersTest extends TestCase
 
         $store = $seller->store;
 
+        // update the title
         $this->patch('/stores/edit/' . $store->id, [
             'title' => 'my own Store',
         ]);
 
         $store->refresh();
 
+        // change takes place
         $this->assertEquals('my own Store', $store->title);
 
     }
-
-
-
-//    function a_product_can_belong_to_a_store(){
-//
-//        $this->assertTrue(true);
-//
-//    }
 
 }

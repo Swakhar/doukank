@@ -95,8 +95,69 @@
                 </accordian>
 
                 <accordian :title="'{{ __('admin::app.marketplace.stores.social-links') }}'" :active="true">
-
+                    <div slot="body">
+                        @foreach($socialmedia = ['facebook', 'twitter', 'instagram', 'telegram'] as $item)
+                            <div class="control-group" :class="[errors.has({{$item}}) ? 'has-error' : '']">
+                                <label for="{{$item}}">{{ __('admin::app.marketplace.stores.'.$item) }}</label>
+                                <input type="text" class="control" id="{{$item}}" name="{{$item}}" value="{{$store->$item}}"/>
+                            </div>
+                        @endforeach
+                    </div>
                 </accordian>
+
+                <accordian :title="'{{ __('admin::app.marketplace.stores.description-and-images') }}'" :active="true">
+                    <div slot="body">
+
+{{--                        {!! view_render_event('bagisto.admin.catalog.category.edit_form_accordian.description_images.controls.before', ['category' => $category]) !!}--}}
+
+                        <description></description>
+
+                        <div class="control-group {!! $errors->has('image.*') ? 'has-error' : '' !!}">
+                            <label>{{ __('admin::app.catalog.categories.image') }}
+
+                                <image-wrapper :button-label="'{{ __('admin::app.catalog.products.add-image-btn-title') }}'" input-name="image" :multiple="false"  :images='"{{ $store->image_url }}"'></image-wrapper>
+
+                                <span class="control-error" v-if="{!! $errors->has('image.*') !!}">
+                                    @foreach ($errors->get('image.*') as $key => $message)
+                                        @php echo str_replace($key, 'Image', $message[0]); @endphp
+                                    @endforeach
+                                </span>
+
+                        </div>
+
+{{--                        {!! view_render_event('bagisto.admin.catalog.category.edit_form_accordian.description_images.controls.after', ['category' => $category]) !!}--}}
+
+                    </div>
+                </accordian>
+
+{{--                {!! view_render_event('bagisto.admin.catalog.category.edit_form_accordian.seo.before', ['category' => $category]) !!}--}}
+
+                <accordian :title="'{{ __('admin::app.marketplace.stores.seo') }}'" :active="true">
+                    <div slot="body">
+
+{{--                        {!! view_render_event('bagisto.admin.catalog.category.edit_form_accordian.seo.controls.before', ['category' => $category]) !!}--}}
+
+                        <div class="control-group">
+                            <label for="meta_title">{{ __('admin::app.marketplace.stores.meta_title') }}</label>
+                            <input type="text" class="control" id="meta_title" name="{{$locale}}[meta_title]" value="{{ old($locale)['meta_title'] ?: $store->translate($locale)['meta_title'] }}"/>
+                        </div>
+
+                        <div class="control-group">
+                            <label for="meta_description">{{ __('admin::app.marketplace.stores.meta_description') }}</label>
+                            <textarea class="control" id="meta_description" name="{{$locale}}[meta_description]">{{ old($locale)['meta_description'] ?: $store->translate($locale)['meta_description'] }}</textarea>
+                        </div>
+
+                        <div class="control-group">
+                            <label for="meta_keywords">{{ __('admin::app.marketplace.stores.meta_keywords') }}</label>
+                            <textarea class="control" id="meta_keywords" name="{{$locale}}[meta_keywords]">{{ old($locale)['meta_keywords'] ?: $store->translate($locale)['meta_keywords'] }}</textarea>
+                        </div>
+
+{{--                        {!! view_render_event('bagisto.admin.catalog.category.edit_form_accordian.seo.controls.after', ['category' => $category]) !!}--}}
+
+                    </div>
+                </accordian>
+
+{{--                {!! view_render_event('bagisto.admin.catalog.category.edit_form_accordian.seo.after', ['category' => $category]) !!}--}}
 
                 <input name="_method" type="hidden" value="PUT">
 
@@ -110,11 +171,20 @@
 @push('scripts')
     <script src="{{ asset('vendor/webkul/admin/assets/js/tinyMCE/tinymce.min.js') }}"></script>
 
+    <script type="text/x-template" id="description-template">
+
+        <div class="control-group" :class="[errors.has('{{$locale}}[description]') ? 'has-error' : '']">
+            <label for="description" :class="isRequired ? 'required' : ''">{{ __('admin::app.marketplace.stores.description') }}</label>
+            <textarea v-validate="isRequired ? 'required' : ''" class="control" id="description" name="{{$locale}}[description]" data-vv-as="&quot;{{ __('admin::app.marketplace.stores.description') }}&quot;">{{ old($locale)['description'] ?: $store->translate($locale)['description'] }}</textarea>
+            <span class="control-error" v-if="errors.has('{{$locale}}[description]')">@{{ errors.first('{!!$locale!!}[description]') }}</span>
+        </div>
+
+    </script>
+
     <script>
         $(document).ready(function () {
-
             tinymce.init({
-                selector: 'textarea#description, textarea#short_description',
+                selector: 'textarea#description',
                 height: 200,
                 width: "100%",
                 plugins: 'image imagetools media wordcount save fullscreen code',
@@ -122,6 +192,39 @@
                 image_advtab: true
             });
         });
+
+        Vue.component('description', {
+
+            template: '#description-template',
+
+            inject: ['$validator'],
+
+            data: function() {
+                return {
+                    isRequired: true,
+                }
+            },
+
+            // created: function () {
+            //     var this_this = this;
+            //
+            //     $(document).ready(function () {
+            //         $('#display_mode').on('change', function (e) {
+            //             if ($('#display_mode').val() != 'products_only') {
+            //                 this_this.isRequired = true;
+            //             } else {
+            //                 this_this.isRequired = false;
+            //             }
+            //         })
+            //
+            //         if ($('#display_mode').val() != 'products_only') {
+            //             this_this.isRequired = true;
+            //         } else {
+            //             this_this.isRequired = false;
+            //         }
+            //     });
+            // }
+        })
     </script>
 
 @endpush

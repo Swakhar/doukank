@@ -231,6 +231,10 @@ Route::group(['middleware' => ['web']], function () {
                     'view' => 'admin::marketplace.categories.create'
                 ])->name('admin.marketplace.categories.create');
 
+                Route::post('categories/create', 'Badenjki\Seller\Http\Controllers\StoreCategoryController@store')->defaults('_config', [
+                    'redirect' => 'admin.marketplace.categories.index'
+                ])->name('admin.marketplace.categories.store');
+
                 Route::get('categories/edit/{id}', 'Badenjki\Seller\Http\Controllers\StoreCategoryController@edit')->defaults('_config', [
                     'view' => 'admin::marketplace.categories.edit'
                 ])->name('admin.marketplace.categories.edit');

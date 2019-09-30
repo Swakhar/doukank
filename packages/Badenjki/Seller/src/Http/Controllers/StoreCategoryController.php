@@ -26,6 +26,21 @@ class StoreCategoryController extends Controller{
 
         return view($this->_config['view'], compact('storeCategories'));
 
+    }
+
+    public function create(){
+
+        return view($this->_config['view']);
+
+    }
+
+    public function store(){
+
+        $category = $this->storeCategory->create(request()->all());
+
+        session()->flash('success', trans('admin::app.response.create-success', ['name' => 'Category']));
+
+        return redirect()->route($this->_config['redirect']);
 
     }
 

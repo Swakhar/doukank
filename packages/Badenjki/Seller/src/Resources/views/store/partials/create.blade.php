@@ -5,7 +5,7 @@
 
 <div class="control-group" :class="[errors.has('name') ? 'has-error' : '']">
     <label for="name" class="required">{{ __('shop::app.customer.account.store.create.store-title') }}</label>
-    <input type="text" class="control" name="{{$locale}}[name]" id="name" v-validate="'required'" data-vv-as="&quot;{{ __('shop::app.customer.account.store.create.title') }}&quot;">
+    <input type="text" class="control" name="{{$locale}}[name]" placeholder="{{__('shop::app.customer.account.store.create.title-placeholder')}}" id="name" v-validate="'required'" data-vv-as="&quot;{{ __('shop::app.customer.account.store.create.title') }}&quot;">
     <span class="control-error" v-if="errors.has('name')">@{{ errors.first('name') }}</span>
 </div>
 

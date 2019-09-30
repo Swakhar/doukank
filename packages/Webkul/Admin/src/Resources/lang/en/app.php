@@ -430,11 +430,25 @@ return [
             'social-links' => 'Social Links',
             'add-store-btn-title' => 'Create Store',
             'category' => 'Store Category',
-            'select-category' => 'Select a Category'
+            'select-category' => 'Select a Category',
+            'facebook' => 'Facebook',
+            'twitter' => 'Twitter',
+            'instagram' => 'Instagram',
+            'telegram' => 'Telegram',
+            'description-and-images' => 'Description and Images',
+            'seo' => 'Search Engine Optimization',
+            'slug' => 'Slug',
+            'meta_title' => 'Meta Title',
+            'meta_description' => 'Meta Description',
+            'meta_keywords' => 'Meta Keywords',
+            'image' => 'Image',
+            'description' => 'Description'
+
         ],
         'categories' => [
             'title' => 'Categories',
-            'add-category-btn-title' => 'Create Category'
+            'add-category-btn-title' => 'Create Category',
+            'general' => 'General'
         ],
         'invoices' => [
             'title' => 'Invoices',

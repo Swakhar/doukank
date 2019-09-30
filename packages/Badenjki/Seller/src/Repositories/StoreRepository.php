@@ -6,11 +6,8 @@ use Illuminate\Container\Container as App;
 use DB;
 use Illuminate\Support\Facades\Event;
 use Webkul\Core\Eloquent\Repository;
-use Webkul\Attribute\Repositories\AttributeRepository;
-use Webkul\Attribute\Repositories\AttributeOptionRepository;
-use Badenjki\Seller\Models\StoreAttributeValue;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Storage;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Store Repository
@@ -33,7 +30,7 @@ class StoreRepository extends Repository{
 
     public function create(array $data){
 
-//        Event::fire('marketplace.store.create.before');
+        Event::fire('marketplace.store.create.before');
 
         if(isset($data['locale']) && $data['locale'] == 'all'){
 
@@ -57,11 +54,66 @@ class StoreRepository extends Repository{
 
         $store = $this->model->create($data);
 
-//      Event::fire('marketplace.store.create.after');
+      Event::fire('marketplace.store.create.after');
 
         return $store;
 
     }
+
+    /**
+     * @param array $data
+     * @param $id
+     * @param string $attribute
+     * @return mixed
+     */
+    public function update(array $data, $id, $attribute = "id")
+    {
+        $store = $this->find($id);
+
+        Event::fire('marketplace.store.update.before', $id);
+
+        $store->update($data);
+
+        $this->uploadImages($data, $store);
+
+        Event::fire('marketplace.store.update.after', $id);
+
+        return $store;
+    }
+
+    /**
+     * @param array $data
+     * @param mixed $store
+     * @return void
+     */
+    public function uploadImages($data, $store, $type = "image")
+    {
+        if (isset($data[$type])) {
+            $request = request();
+
+            foreach ($data[$type] as $imageId => $image) {
+                $file = $type . '.' . $imageId;
+                $dir = 'store/' . $store->id;
+
+                if ($request->hasFile($file)) {
+                    if ($store->{$type}) {
+                        \Illuminate\Support\Facades\Storage::delete($store->{$type});
+                    }
+
+                    $store->{$type} = $request->file($file)->store($dir);
+                    $store->save();
+                }
+            }
+        } else {
+            if ($store->{$type}) {
+                Storage::delete($store->{$type});
+            }
+
+            $store->{$type} = null;
+            $store->save();
+        }
+    }
+
 
 
 }

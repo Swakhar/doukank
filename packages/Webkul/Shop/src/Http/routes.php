@@ -305,7 +305,7 @@ Route::group(['middleware' => ['web', 'locale', 'theme', 'currency']], function 
 
             Route::get('stores/edit/{id}', 'Webkul\Customer\Http\Controllers\AddressController@edit')->defaults('_config', [
                 'view' => 'shop::customers.account.store.edit'
-            ])->name('customer.address.edit');
+            ])->name('customer.store.edit');
 
             Route::patch('stores/edit/{store}', 'Badenjki\Seller\Http\Controllers\StoreController@update')->defaults('_config',[
                 'redirect' => 'customer.store.index'

@@ -328,7 +328,9 @@ return [
                     'store-title' => 'Store Name',
                     'url' => 'Store url',
                     'phone' => 'Business Phone',
-                    'submit' => 'Save Store'
+                    'submit' => 'Save Store',
+                    'select-category' => 'Choose a category',
+                    'title-placeholder' => 'Example: Al-Fares store'
                 ]
             ]
         ]
