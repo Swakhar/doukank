@@ -24,9 +24,9 @@ return [
 
     'header' => [
         'title' => 'الحساب',
-        'dropdown-text' => 'إدارة العربة ، الطلبات قائمة الأمنيات',
-        'sign-in' => 'وقع هنا',
-        'sign-up' => 'سجل',
+        'dropdown-text' => 'إدارة المشتريات والطلبات وقائمة الأماني',
+        'sign-in' => 'تسجيل الدخول',
+        'sign-up' => 'الاشتراك',
         'account' => 'الحساب',
         'cart' => 'عربة',
         'profile' => 'التوصيف',
@@ -86,18 +86,18 @@ return [
     'customer' => [
         'signup-text' => [
             'account_exists' => 'لدي حساب بالفعل',
-            'title' => 'وقع هنا'
+            'title' => 'تسجيل الدخول'
         ],
 
         'signup-form' => [
             'page-title' => 'استمارة تسجيل العملاء',
-            'title' => 'سجل',
+            'title' => 'الاشتراك',
             'firstname' => 'الاسم الأول',
             'lastname' => 'الاسم الأخير',
             'email' => 'البريد الإلكتروني',
             'password' => 'كلمة السر',
             'confirm_pass' => 'تأكيد كلمة السر',
-            'button_title' => 'سجل',
+            'button_title' => 'الاشتراك',
             'agree' => 'موافق',
             'terms' => 'الشروط',
             'conditions' => 'الشروط',
@@ -116,16 +116,16 @@ return [
 
         'login-text' => [
             'no_account' => 'ليس لديك حساب',
-            'title' => 'سجل',
+            'title' => 'الاشتراك',
         ],
 
         'login-form' => [
             'page-title' => 'دخول العملاء',
-            'title' => 'وقع هنا',
+            'title' => 'تسجيل الدخول',
             'email' => 'البريد الإلكتروني',
             'password' => 'كلمة السر',
             'forgot_pass' => 'نسيت كلمة السر؟',
-            'button_title' => 'وقع هنا',
+            'button_title' => 'تسجيل الدخول',
             'remember' => 'تذكريني',
             'footer' => '© Copyright 2018 Webkul Software, جميع الحقوق محفوظة',
             'invalid-creds' => 'الرجاء التحقق من أوراق اعتمادك ومحاولة مرة أخرى',
@@ -166,7 +166,7 @@ return [
 
                 'fname' => 'الاسم الأول',
                 'lname' => 'الاسم الأخير',
-                'gender' => 'باء-نوع الجنس',
+                'gender' => 'النوع',
                 'dob' => 'تاريخ الميلاد',
                 'phone' => 'الهاتف',
                 'email' => 'البريد الإلكتروني',
@@ -398,7 +398,7 @@ return [
             'payment' => 'الدفع',
             'complete' => 'اكتمل',
             'billing-address' => 'عنوان الفواتير',
-            'sign-in' => 'وقع هنا',
+            'sign-in' => 'تسجيل الدخول',
             'first-name' => 'الاسم الأول',
             'last-name' => 'الاسم الأخير',
             'email' => 'البريد الإلكتروني',
