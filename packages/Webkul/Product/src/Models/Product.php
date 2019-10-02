@@ -2,6 +2,7 @@
 
 namespace Webkul\Product\Models;
 
+use Badenjki\Seller\Models\Store;
 use Illuminate\Database\Eloquent\Model;
 use Webkul\Attribute\Models\AttributeFamilyProxy;
 use Webkul\Category\Models\CategoryProxy;
@@ -11,7 +12,7 @@ use Webkul\Product\Contracts\Product as ProductContract;
 
 class Product extends Model implements ProductContract
 {
-    protected $fillable = ['type', 'attribute_family_id', 'sku', 'parent_id'];
+    protected $fillable = ['type', 'attribute_family_id', 'sku', 'parent_id', 'store_id'];
 
     // protected $with = ['attribute_family', 'inventories'];
 
@@ -311,5 +312,11 @@ class Product extends Model implements ProductContract
     public function getProductAttribute()
     {
         return $this;
+    }
+
+    public function store(){
+
+        return $this->belongsTo(Store::class);
+
     }
 }

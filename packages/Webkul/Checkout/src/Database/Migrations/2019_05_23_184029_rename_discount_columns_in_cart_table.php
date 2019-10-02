@@ -15,6 +15,9 @@ class RenameDiscountColumnsInCartTable extends Migration
     {
         Schema::table('cart', function (Blueprint $table) {
             $table->renameColumn('discount', 'discount_amount');
+        });
+
+        Schema::table('cart', function (Blueprint $table) {
             $table->renameColumn('base_discount', 'base_discount_amount');
         });
     }

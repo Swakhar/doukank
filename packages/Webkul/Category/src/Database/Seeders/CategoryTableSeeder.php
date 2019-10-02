@@ -14,6 +14,7 @@ class CategoryTableSeeder extends Seeder
 
         $now = Carbon::now();
 
+        // root category for products
         DB::table('categories')->insert([
             ['id' => '1','position' => '1','image' => NULL,'status' => '1','_lft' => '1','_rgt' => '14','parent_id' => NULL, 'created_at' => $now, 'updated_at' => $now]
         ]);
@@ -21,5 +22,14 @@ class CategoryTableSeeder extends Seeder
         DB::table('category_translations')->insert([
             ['id' => '1','name' => 'Root','slug' => 'root','description' => 'Root','meta_title' => '','meta_description' => '','meta_keywords' => '','category_id' => '1','locale' => 'en']
         ]);
+
+        // root category for stores.
+//        DB::table('categories')->insert([
+//            ['id' => '2','position' => '1','image' => NULL,'status' => '1','_lft' => '1','_rgt' => '14','parent_id' => NULL, 'created_at' => $now, 'updated_at' => $now, 'type' => 'store']
+//        ]);
+//
+//        DB::table('category_translations')->insert([
+//            ['id' => '2','name' => 'Root','slug' => 'root','description' => 'Root','meta_title' => '','meta_description' => '','meta_keywords' => '','category_id' => '2','locale' => 'en']
+//        ]);
     }
 }

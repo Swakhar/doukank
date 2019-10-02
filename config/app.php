@@ -244,7 +244,10 @@ return [
         Webkul\Sales\Providers\SalesServiceProvider::class,
         Webkul\Tax\Providers\TaxServiceProvider::class,
         Webkul\API\Providers\APIServiceProvider::class,
-        Webkul\Discount\Providers\DiscountServiceProvider::class
+        Webkul\Discount\Providers\DiscountServiceProvider::class,
+
+        //Badenjki packages
+        Badenjki\Seller\Providers\SellerServiceProvider::class
     ],
 
     /*

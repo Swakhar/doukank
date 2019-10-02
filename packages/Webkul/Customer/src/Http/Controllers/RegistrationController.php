@@ -2,6 +2,7 @@
 
 namespace Webkul\Customer\Http\Controllers;
 
+use Badenjki\Seller\Models\Store;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Event;
@@ -46,6 +47,7 @@ class RegistrationController extends Controller
      */
     public function show()
     {
+
         return view($this->_config['view']);
     }
 
@@ -56,11 +58,13 @@ class RegistrationController extends Controller
      */
     public function create(Request $request)
     {
+
         $request->validate([
             'first_name' => 'string|required',
             'last_name' => 'string|required',
             'email' => 'email|required|unique:customers,email',
             'password' => 'confirmed|min:6|required',
+            'phone' => 'required',
         ]);
 
         $data = request()->input();
@@ -88,6 +92,7 @@ class RegistrationController extends Controller
         Event::fire('customer.registration.after', $customer);
 
         if ($customer) {
+
             if (core()->getConfigData('customer.settings.email.verification')) {
                 try {
                     Mail::queue(new VerificationEmail($verificationData));

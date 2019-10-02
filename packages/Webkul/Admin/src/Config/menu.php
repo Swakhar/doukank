@@ -31,12 +31,29 @@ return [
         'route' => 'admin.sales.invoices.index',
         'sort' => 3,
         'icon-class' => '',
-    ],
-    [
+    ],[
+        'key' => 'marketplace',
+        'name' => 'admin::app.layouts.marketplace',
+        'route' => 'admin.marketplace.stores.index',
+        'sort' => 3,
+        'icon-class' => 'catalog-icon'
+    ],[
+        'key' => 'marketplace.sellers',
+        'name' => 'admin::app.layouts.stores',
+        'route' => 'admin.marketplace.stores.index',
+        'sort' => 1,
+        'icon-class' => ''
+    ],[
+        'key' => 'marketplace.categories',
+        'name' => 'admin::app.layouts.store-categories',
+        'route' => 'admin.marketplace.categories.index',
+        'sort' => 2,
+        'icon-class' => ''
+    ],[
         'key' => 'catalog',
         'name' => 'admin::app.layouts.catalog',
         'route' => 'admin.catalog.products.index',
-        'sort' => 3,
+        'sort' => 4,
         'icon-class' => 'catalog-icon',
     ], [
         'key' => 'catalog.products',
@@ -66,7 +83,7 @@ return [
         'key' => 'customers',
         'name' => 'admin::app.layouts.customers',
         'route' => 'admin.customer.index',
-        'sort' => 4,
+        'sort' => 5,
         'icon-class' => 'customer-icon',
     ], [
         'key' => 'customers.customers',
@@ -180,7 +197,7 @@ return [
         'key' => 'promotions',
         'name' => 'admin::app.layouts.promotion',
         'route' => 'admin.cart-rule.index',
-        'sort' => 5,
+        'sort' => 6,
         'icon-class' => 'promotion-icon',
     ], [
         'key' => 'promotions.cart-rule',

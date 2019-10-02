@@ -11,6 +11,12 @@ return [
         'reviews' => 'Reviews',
         'wishlist' => 'Wishlist',
         'orders' => 'Orders',
+        'my-store' => 'My Store',
+        'become-seller' => 'Become a Seller',
+        'store-profile' => 'Profile',
+        'store-products' => 'Products',
+        'store-orders' => 'Orders',
+        'store-reviews' => 'Reviews',
     ],
 
     'common' => [
@@ -18,7 +24,7 @@ return [
     ],
 
     'home' => [
-        'page-title' => 'Bagisto - Home',
+        'page-title' => 'Doukank - Home',
         'featured-products' => 'Featured Products',
         'new-products' => 'New Products',
         'verify-email' => 'Verify Your Email Account',
@@ -59,14 +65,14 @@ return [
         'subscribed' => 'You Are Now Subscribed To Subscription Emails',
         'not-subscribed' => 'You Cannot Be Subscribed To Subscription Emails, Try Again After Some time',
         'already' => 'You Are Already Subscribed To Our Subscription List',
-        'unsubscribed' => 'You Are Unsubscribed From Bagisto Subscription Mails',
+        'unsubscribed' => 'You Are Unsubscribed From Doukank Subscription Mails',
         'already-unsub' => 'You Are Already Unsubscribed',
         'not-subscribed' => 'Error! Mail Cannot Be Sent Currently, Please Try Again Later'
     ],
 
     'search' => [
         'no-results' => 'No Results Found',
-        'page-title' => 'Bagisto - Search',
+        'page-title' => 'Doukank - Search',
         'found-results' => 'Search Results Found',
         'found-result' => 'Search Result Found'
     ],
@@ -99,10 +105,13 @@ return [
             'firstname' => 'First Name',
             'lastname' => 'Last Name',
             'email' => 'Email',
+            'phone' => 'Phone',
             'password' => 'Password',
             'confirm_pass' => 'Confirm Password',
             'button_title' => 'Register',
             'agree' => 'Agree',
+            'seller_message' => 'I want to be a seller',
+            'store_url' => 'Enter the store url',
             'terms' => 'Terms',
             'conditions' => 'Conditions',
             'using' => 'by using this website',
@@ -293,6 +302,35 @@ return [
 
                 'view' => [
                     'page-tile' => 'Review #:id',
+                ]
+            ],
+
+            'store' => [
+                'become-seller' => [
+                    'title' => 'Become a Seller',
+                    'page-title' => 'Customer - Become a Seller',
+                ],
+                'my-store' => [
+                    'title' => 'My Store',
+                    'page-title' => 'Seller - My Store'
+                ],
+                'index' => [
+                    'title' => 'My store',
+                    'page-title' => 'My Store',
+                    'edit' => 'Edit',
+                    'pending' => 'Your store is under review. We will notify you once accepted',
+                    'empty' => 'Your online store is few steps away! start selling products and making money today',
+                    'add' => 'Become a seller',
+                ],
+                'create' => [
+                    'title' => 'Create a store',
+                    'page-title' => 'Create a store',
+                    'store-title' => 'Store Name',
+                    'url' => 'Store url',
+                    'phone' => 'Business Phone',
+                    'submit' => 'Save Store',
+                    'select-category' => 'Choose a category',
+                    'title-placeholder' => 'Example: Al-Fares store'
                 ]
             ]
         ]

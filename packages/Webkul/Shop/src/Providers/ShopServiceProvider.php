@@ -63,17 +63,26 @@ class ShopServiceProvider extends ServiceProvider
      */
     protected function composeView()
     {
-        view()->composer('shop::customers.account.partials.sidemenu', function ($view) {
-            $tree = Tree::create();
+        view()->composer('shop::customers.account.partials.customersidemenu', function ($view) {
+            $customerTree = Tree::create();
 
             foreach (config('menu.customer') as $item) {
-                $tree->add($item, 'menu');
+                $customerTree->add($item, 'menu');
             }
-
-            $tree->items = core()->sortItems($tree->items);
-
-            $view->with('menu', $tree);
+            $customerTree->items = core()->sortItems($customerTree->items);
+            $view->with('menu', $customerTree);
         });
+
+        view()->composer('shop::customers.account.partials.sellersidemenu', function ($view) {
+            $customerTree = Tree::create();
+
+            foreach (config('menu.seller') as $item) {
+                $customerTree->add($item, 'menu');
+            }
+            $customerTree->items = core()->sortItems($customerTree->items);
+            $view->with('menu', $customerTree);
+        });
+
     }
 
     /**
@@ -84,7 +93,10 @@ class ShopServiceProvider extends ServiceProvider
     protected function registerConfig()
     {
         $this->mergeConfigFrom(
-            dirname(__DIR__) . '/Config/menu.php', 'menu.customer'
+            dirname(__DIR__) . '/Config/menus/customer.php', 'menu.customer'
+        );
+        $this->mergeConfigFrom(
+            dirname(__DIR__) . '/Config/menus/seller.php', 'menu.seller'
         );
     }
 }

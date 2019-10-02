@@ -39,6 +39,12 @@
                 <span class="control-error" v-if="errors.has('email')">@{{ errors.first('email') }}</span>
             </div>
 
+            <div class="control-group" :class="[errors.has('phone') ? 'has-error' : '']">
+                <label for="phone" class="required">{{ __('shop::app.customer.signup-form.phone') }}</label>
+                <input type="tel" class="control" name="phone" value="{{ old('phone') }}" data-vv-as="&quot;{{ __('shop::app.customer.signup-form.phone') }}&quot;">
+                <span class="control-error" v-if="errors.has('phone')">@{{ errors.first('phone') }}</span>
+            </div>
+
             <div class="control-group" :class="[errors.has('password') ? 'has-error' : '']">
                 <label for="password" class="required">{{ __('shop::app.customer.signup-form.password') }}</label>
                 <input type="password" class="control" name="password" v-validate="'required|min:6'" ref="password" value="{{ old('password') }}" data-vv-as="&quot;{{ __('shop::app.customer.signup-form.password') }}&quot;">
@@ -51,16 +57,16 @@
                 <span class="control-error" v-if="errors.has('password_confirmation')">@{{ errors.first('password_confirmation') }}</span>
             </div>
 
-            {{-- <div class="signup-confirm" :class="[errors.has('agreement') ? 'has-error' : '']">
-                <span class="checkbox">
-                    <input type="checkbox" id="checkbox2" name="agreement" v-validate="'required'">
-                    <label class="checkbox-view" for="checkbox2"></label>
-                    <span>{{ __('shop::app.customer.signup-form.agree') }}
-                        <a href="">{{ __('shop::app.customer.signup-form.terms') }}</a> & <a href="">{{ __('shop::app.customer.signup-form.conditions') }}</a> {{ __('shop::app.customer.signup-form.using') }}.
-                    </span>
-                </span>
-                <span class="control-error" v-if="errors.has('agreement')">@{{ errors.first('agreement') }}</span>
-            </div> --}}
+{{--            <div class="signup-confirm" :class="[errors.has('agreement') ? 'has-error' : '']">--}}
+{{--                <span class="checkbox">--}}
+{{--                    <input type="checkbox" id="checkbox2" name="agreement" v-validate="'required'">--}}
+{{--                    <label class="checkbox-view" for="checkbox2"></label>--}}
+{{--                    <span>{{ __('shop::app.customer.signup-form.agree') }}--}}
+{{--                        <a href="">{{ __('shop::app.customer.signup-form.terms') }}</a> & <a href="">{{ __('shop::app.customer.signup-form.conditions') }}</a> {{ __('shop::app.customer.signup-form.using') }}.--}}
+{{--                    </span>--}}
+{{--                </span>--}}
+{{--                <span class="control-error" v-if="errors.has('agreement')">@{{ errors.first('agreement') }}</span>--}}
+{{--            </div>--}}
 
             {!! view_render_event('bagisto.shop.customers.signup_form_controls.after') !!}
 

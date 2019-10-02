@@ -141,7 +141,6 @@ Route::group(['middleware' => ['web']], function () {
 
             Route::post('groups/delete/{id}', 'Webkul\Admin\Http\Controllers\Customer\CustomerGroupController@destroy')->name('admin.groups.delete');
 
-
             // Sales Routes
             Route::prefix('sales')->group(function () {
                 // Sales Order Routes
@@ -156,7 +155,6 @@ Route::group(['middleware' => ['web']], function () {
                 Route::get('/orders/cancel/{id}', 'Webkul\Admin\Http\Controllers\Sales\OrderController@cancel')->defaults('_config', [
                     'view' => 'admin::sales.orders.cancel'
                 ])->name('admin.sales.orders.cancel');
-
 
                 // Sales Invoices Routes
                 Route::get('/invoices', 'Webkul\Admin\Http\Controllers\Sales\InvoiceController@index')->defaults('_config', [
@@ -179,7 +177,6 @@ Route::group(['middleware' => ['web']], function () {
                     'view' => 'admin::sales.invoices.print'
                 ])->name('admin.sales.invoices.print');
 
-
                 // Sales Shipments Routes
                 Route::get('/shipments', 'Webkul\Admin\Http\Controllers\Sales\ShipmentController@index')->defaults('_config', [
                     'view' => 'admin::sales.shipments.index'
@@ -196,7 +193,57 @@ Route::group(['middleware' => ['web']], function () {
                 Route::get('/shipments/view/{id}', 'Webkul\Admin\Http\Controllers\Sales\ShipmentController@view')->defaults('_config', [
                     'view' => 'admin::sales.shipments.view'
                 ])->name('admin.sales.shipments.view');
+
             });
+
+            // Marketplace Routes
+            Route::prefix('marketplace')->group(function () {
+
+                // Sales Order Routes
+                Route::get('stores', 'Badenjki\Seller\Http\Controllers\StoreController@index')->defaults('_config', [
+                    'view' => 'admin::marketplace.stores.index'
+                ])->name('admin.marketplace.stores.index');
+
+                Route::get('/stores/create', 'Badenjki\Seller\Http\Controllers\StoreController@create')->defaults('_config', [
+                    'view' => 'admin::marketplace.stores.create'
+                ])->name('admin.marketplace.stores.create');
+
+//                Route::get('stores/view/{id}', 'Badenjki\Seller\Http\Controllers\StoreController@view')->defaults('_config', [
+//                    'view' => 'admin::sales.orders.view'
+//                ])->name('admin.sales.orders.view');
+
+                Route::get('stores/edit/{id}', 'Badenjki\Seller\Http\Controllers\StoreController@edit')->defaults('_config',[
+                    'view' => 'admin::marketplace.stores.edit'
+                ])->name('admin.marketplace.stores.edit');
+
+                Route::put('stores/edit/{id}', 'Badenjki\Seller\Http\Controllers\StoreController@update')->defaults('_config', [
+                    'redirect' => 'admin.marketplace.stores.index'
+                ])->name('admin.marketplace.stores.update');
+
+                Route::post('sellers/delete/{id}', 'Badenjki\Seller\Http\Controllers\SellerController@destroy')
+                    ->name('admin.marketplace.stores.delete');
+
+                Route::get('categories', 'Badenjki\Seller\Http\Controllers\StoreCategoryController@index')->defaults('_config', [
+                    'view' => 'admin::marketplace.categories.index'
+                ])->name('admin.marketplace.categories.index');
+
+                Route::get('categories/create', 'Badenjki\Seller\Http\Controllers\StoreCategoryController@create')->defaults('_config', [
+                    'view' => 'admin::marketplace.categories.create'
+                ])->name('admin.marketplace.categories.create');
+
+                Route::post('categories/create', 'Badenjki\Seller\Http\Controllers\StoreCategoryController@store')->defaults('_config', [
+                    'redirect' => 'admin.marketplace.categories.index'
+                ])->name('admin.marketplace.categories.store');
+
+                Route::get('categories/edit/{id}', 'Badenjki\Seller\Http\Controllers\StoreCategoryController@edit')->defaults('_config', [
+                    'view' => 'admin::marketplace.categories.edit'
+                ])->name('admin.marketplace.categories.edit');
+
+                Route::post('categories/delete/{id}', 'Badenjki\Seller\Http\Controllers\StoreCategoryController@destroy')
+                    ->name('admin.marketplace.categories.delete');
+
+            });
+
 
             // Catalog Routes
             Route::prefix('catalog')->group(function () {

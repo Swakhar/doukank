@@ -59,7 +59,8 @@
         "bagisto/laravel-tax": "v0.1.0",
         "bagisto/laravel-api": "v0.1.0",
         "bagisto/laravel-paypal": "v0.1.0",
-        "bagisto/laravel-discount": "v0.1.0"
+        "bagisto/laravel-discount": "v0.1.0",
+        "badenjki/seller": "v0.1.0"
     },
     "autoload": {
         "classmap": [
@@ -87,7 +88,8 @@
             "Webkul\\Sales\\": "packages/Webkul/Sales/src",
             "Webkul\\Tax\\": "packages/Webkul/Tax/src",
             "Webkul\\API\\": "packages/Webkul/API",
-            "Webkul\\Discount\\": "packages/Webkul/Discount/src"
+            "Webkul\\Discount\\": "packages/Webkul/Discount/src",
+            "Badenjki\\Seller\\": "packages/Badenjki/Seller/src"
         }
     },
     "autoload-dev": {

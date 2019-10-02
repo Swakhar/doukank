@@ -48,7 +48,7 @@ class AttributeRepository extends Repository
     /**
      * @param array $data
      * @return mixed
-     */
+     */ 
     public function create(array $data)
     {
         Event::fire('catalog.attribute.create.before');
