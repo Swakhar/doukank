@@ -86,6 +86,20 @@
                             <span class="control-error" v-if="errors.has('sku')">@{{ errors.first('sku') }}</span>
                         </div>
 
+                        <div class="control-group" :class="[errors.has('store_id') ? 'has-error' : '']">
+                            <label for="store_id" class="required">{{ __('admin::app.catalog.products.store') }}</label>
+                            <select class="control" v-validate="'required'" id="store_id" name="store_id" data-vv-as="&quot;{{ __('admin::app.catalog.products.store') }}&quot;">
+                                <option value=""></option>
+                                @foreach ($stores as $store)
+                                    <option value="{{ $store->id }}">{{ $store->name }}</option>
+                                @endforeach
+                            </select>
+{{--                            @if ($familyId)--}}
+{{--                                <input type="hidden" name="attribute_family_id" value="{{ $familyId }}"/>--}}
+{{--                            @endif--}}
+                            <span class="control-error" v-if="errors.has('store_id')">@{{ errors.first('store_id') }}</span>
+                        </div>
+
                         {!! view_render_event('bagisto.admin.catalog.product.create_form_accordian.general.controls.after') !!}
 
                     </div>

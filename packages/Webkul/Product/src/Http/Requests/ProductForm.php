@@ -91,7 +91,7 @@ class ProductForm extends FormRequest
                     continue;
                 }
 
-                if ($product->type == 'configurable' && in_array($attribute->code, ['price', 'cost', 'special_price', 'special_price_from', 'special_price_to', 'width', 'height', 'depth', 'weight'])) {
+                if ($product->type == 'configurable' && in_array($attribute->code, ['price', 'cost', 'special_price', 'naame', 'special_price_from', 'special_price_to', 'width', 'height', 'depth', 'weight'])) {
                     continue;
                 }
 

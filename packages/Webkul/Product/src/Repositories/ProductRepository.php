@@ -9,6 +9,7 @@ use Webkul\Core\Eloquent\Repository;
 use Webkul\Attribute\Repositories\AttributeRepository;
 use Webkul\Attribute\Repositories\AttributeOptionRepository;
 use Webkul\Product\Models\ProductAttributeValue;
+use Badenjki\Seller\Repositories\StoreRepository;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Storage;
 
@@ -56,6 +57,13 @@ class ProductRepository extends Repository
     protected $productImage;
 
     /**
+     * StoreRepository object
+     *
+     * @var array
+     */
+    protected $productStore;
+
+    /**
      * Create a new controller instance.
      *
      * @param  Webkul\Attribute\Repositories\AttributeRepository             $attribute
@@ -63,6 +71,7 @@ class ProductRepository extends Repository
      * @param  Webkul\Attribute\Repositories\ProductAttributeValueRepository $attributeValue
      * @param  Webkul\Product\Repositories\ProductInventoryRepository        $productInventory
      * @param  Webkul\Product\Repositories\ProductImageRepository            $productImage
+     * @param  Badenjki\Seller\Repositories\StoreRepository                  $productStore
      * @return void
      */
     public function __construct(
@@ -71,6 +80,7 @@ class ProductRepository extends Repository
         ProductAttributeValueRepository $attributeValue,
         ProductInventoryRepository $productInventory,
         ProductImageRepository $productImage,
+        StoreRepository $productStore,
         App $app)
     {
         $this->attribute = $attribute;
@@ -82,6 +92,8 @@ class ProductRepository extends Repository
         $this->productInventory = $productInventory;
 
         $this->productImage = $productImage;
+
+        $this->productStore = $productStore;
 
         parent::__construct($app);
     }

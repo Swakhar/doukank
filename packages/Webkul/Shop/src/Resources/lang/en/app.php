@@ -371,7 +371,8 @@ return [
         'out-of-stock' => 'Out Of Stock',
         'view-all' => 'View All',
         'select-above-options' => 'Please select above options first.',
-        'less-quantity' => 'Quantity can not be less than one.'
+        'less-quantity' => 'Quantity can not be less than one.',
+        'seller' => 'Seller'
     ],
 
     'wishlist' => [

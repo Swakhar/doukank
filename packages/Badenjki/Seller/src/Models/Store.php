@@ -42,7 +42,7 @@ class Store extends TranslatableModel implements StoreContract
 
     public function path(){
 
-        return '/' . $this->id;
+        return '/stores/' . $this->id;
 
     }
 

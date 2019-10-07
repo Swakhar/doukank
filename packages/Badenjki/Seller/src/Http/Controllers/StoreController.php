@@ -104,9 +104,12 @@ class StoreController extends Controller
      * @param  \App\Store  $store
      * @return \Illuminate\Http\Response
      */
-    public function show(Store $store)
+    public function show($id)
     {
-        return $store->title;
+
+        $store = $this->store->findOrFail($id);
+
+        return $store->name;
     }
 
     /**

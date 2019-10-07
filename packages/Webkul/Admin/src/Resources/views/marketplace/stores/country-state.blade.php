@@ -1,15 +1,15 @@
-<div class="control-group" :class="[errors.has('state') ? 'has-error' : '']">
+<div class="control-group" :class="[errors.has('state_id') ? 'has-error' : '']">
     <label for="state_id" class="required">
         {{ __('admin::app.marketplace.stores.state') }}
     </label>
-    <select class="control" id="state_id" name="state_id">
+    <select class="control" v-validate="'required'" id="state_id" name="state_id">
         <option value="">{{ __('admin::app.marketplace.stores.select-state') }}</option>
         @foreach(core()->states($countryCode) as $state)
             <option value="{{$state->id}}" {{isset($store) && $store->state_id == $state->id ? 'selected' : ''}}>{{$state->translate($locale)['name']}}</option>
         @endforeach
     </select>
-    <span class="control-error" v-if="errors.has('state')">
-        @{{ errors.first('state') }}
+    <span class="control-error" v-if="errors.has('state_id')">
+        @{{ errors.first('state_id') }}
     </span>
 </div>
 {{--@push('scripts')--}}

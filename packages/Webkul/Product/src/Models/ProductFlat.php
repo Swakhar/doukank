@@ -38,6 +38,15 @@ class ProductFlat extends Model implements ProductFlatContract
     }
 
     /**
+     * Get product store id
+     */
+    public function getStoreAttribute(){
+
+        return $this->product->seller;
+
+    }
+
+    /**
      * @param string $key
      *
      * @return bool

@@ -2,6 +2,7 @@
 
 namespace Webkul\Product\Http\Controllers;
 
+use Badenjki\Seller\Repositories\StoreRepository;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Event;
@@ -64,6 +65,13 @@ class ProductController extends Controller
     protected $productAttributeValue;
 
     /**
+     * StoreRepository object
+     *
+     * @var array
+     */
+    protected $store;
+
+    /**
      * Create a new controller instance.
      *
      * @param  \Webkul\Attribute\Repositories\AttributeFamilyRepository     $attributeFamily
@@ -71,6 +79,7 @@ class ProductController extends Controller
      * @param  \Webkul\Inventory\Repositories\InventorySourceRepository     $inventorySource
      * @param  \Webkul\Product\Repositories\ProductRepository               $product
      * @param  \Webkul\Product\Repositories\ProductAttributeValueRepository $productAttributeValue
+     * @param  \Badenjki\Seller\Repositories\StoreRepository                $store
      * @return void
      */
     public function __construct(
@@ -78,7 +87,8 @@ class ProductController extends Controller
         Category $category,
         InventorySource $inventorySource,
         Product $product,
-        ProductAttributeValue $productAttributeValue
+        ProductAttributeValue $productAttributeValue,
+        StoreRepository $store
     )
     {
         $this->attributeFamily = $attributeFamily;
@@ -90,6 +100,8 @@ class ProductController extends Controller
         $this->product = $product;
 
         $this->productAttributeValue = $productAttributeValue;
+
+        $this->store = $store;
 
         $this->_config = request('_config');
     }
@@ -115,11 +127,13 @@ class ProductController extends Controller
 
         $configurableFamily = null;
 
+        $stores = $this->store->all();
+
         if ($familyId = request()->get('family')) {
             $configurableFamily = $this->attributeFamily->find($familyId);
         }
 
-        return view($this->_config['view'], compact('families', 'configurableFamily'));
+        return view($this->_config['view'], compact('families', 'configurableFamily', 'stores'));
     }
 
     /**

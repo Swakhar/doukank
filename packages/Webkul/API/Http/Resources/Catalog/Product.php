@@ -35,6 +35,7 @@ class Product extends JsonResource
         return [
             'id' => $product->id,
             'type' => $product->type,
+            'store' => $product->store,
             'name' => $this->name,
             'url_key' => $this->url_key,
             'price' => $product->type == 'configurable' ? $this->productPriceHelper->getVariantMinPrice($product) : $this->price,

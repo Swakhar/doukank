@@ -11,16 +11,17 @@
 
 @include ('admin::marketplace.stores.country-state', ['countryCode' => 'SY'])
 
-<div class="control-group" :class="[errors.has('category') ? 'has-error' : '']">
+<div class="control-group" :class="[errors.has('category_id') ? 'has-error' : '']">
     <label for="category_id" class="required">
         {{ __('shop::app.customer.account.store.create.store-category') }}
     </label>
-    <select class="control" id="category_id" name="category_id">
-        <option value="">{{ __('shop::app.customer.account.store.create.select-category') }}</option>
+    <select class="control" v-validate="'required'" id="category_id" name="category_id">
+        <option value="">{{ __('admin::app.marketplace.stores.category') }}</option>
         @foreach($categories as $category)
             <option value="{{$category->id}}">{{$category->translate($locale)['name']}}</option>
         @endforeach
     </select>
+        <span class="control-error" v-if="errors.has('category_id')">@{{ errors.first('category_id') }}</span>
 </div>
 
 <div class="control-group" :class="[errors.has('phone') ? 'has-error' : '']">

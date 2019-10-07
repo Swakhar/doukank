@@ -313,7 +313,7 @@ Route::group(['middleware' => ['web', 'locale', 'theme', 'currency']], function 
 
         });
 
-        Route::get('/{store}', 'Badenjki\Seller\Http\Controllers\StoreController@show');
+        Route::get('stores/{id}', 'Badenjki\Seller\Http\Controllers\StoreController@show');
 
     });
 
